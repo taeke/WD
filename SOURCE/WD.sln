@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WDGameEngine", "WDGameEngine\WDGameEngine.csproj", "{8D0A778F-4C58-4B52-AF8A-872E8CB4A7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WDGameEngine.Tests", "WDGameEngine.Tests\WDGameEngine.Tests.csproj", "{AFC78832-81F9-4A78-92B8-C5B4540F7E74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D0A778F-4C58-4B52-AF8A-872E8CB4A7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0A778F-4C58-4B52-AF8A-872E8CB4A7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0A778F-4C58-4B52-AF8A-872E8CB4A7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0A778F-4C58-4B52-AF8A-872E8CB4A7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC78832-81F9-4A78-92B8-C5B4540F7E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC78832-81F9-4A78-92B8-C5B4540F7E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC78832-81F9-4A78-92B8-C5B4540F7E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC78832-81F9-4A78-92B8-C5B4540F7E74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

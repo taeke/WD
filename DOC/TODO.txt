@@ -1,0 +1,52 @@
+TODO VOOR CHECKIN
+=================
+- Project aanmaken op github.
+- File voor excluden files voor github aanmaken.
+- Inchecken en uploaden files naar github.
+- Tweet sturen over github.
+
+TODO
+====
+- Fix laatste TODO's in code.
+- Sommige asserts zijn weggevallen na een refactor slag dit nog aanpassen.
+- resource strings uitzoeken.
+- exceptions aanpassen zodat ze meer info geven.
+- Tests voor Player schrijven
+- Implementatie Player schrijven
+- Database voor world maken.
+- Script voor vullen database maken.
+- Uitzoeken automatisch starten script bij build en op juiste plek neerzetten database.
+- Uitzoeken laden van landen met dabber en en implementeren in World en tests voor schrijven.
+- Commandline test programma project aanmaken.
+- Dependency inkections voor de gameengine dll in orde maken in de commandline project.
+- automatisch starten game met twee players maken.
+- command set voor commandline maken.
+- uitschrijven uitspelen van een game met een bekende seed voor random.
+- html voor tonen speelveld maken.
+- nancy selfhost in commandline project toevoegen en speelveld laden.
+
+CHECK
+=====
+
+VRAGEN
+======
+
+IDEEEN
+======
+- Exception handling uit de entrerprice library.
+- Loggen toevoegen uit enterprice library.
+- Save seed voor random om de replay te kunnen doen.
+- Dependency injection uit de enterprice library.
+- Joker card toevoegen.
+- Nancy voor server pagina waarop het spelverloop is te volgen.
+- SignalR voor de communicatie met de pagina van het spelverloop.
+- Nancy en signalR selfhosting.
+- In de commandline app die met de bots praat worden alle events verzameld en krijgt de bot deze als het zijn turn is.
+
+BESCHRIJVING
+============
+- Het is de verantwoordelijkheid van de gebruiker van de game engine om de juiste speler de commando's te laten geven.
+- De game class krijgt een lijst met kleuren voor de speler aangereikt.
+
+DONE
+====

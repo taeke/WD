@@ -1,0 +1,12 @@
+- De Game class instantieert 1 keer de World class en laad de continenten en landen.
+- Er worden een minimaal aantal Player instanties toegevoegd.
+- De game wordt gestart.
+- De Countries worden willekeurig verdeeld over de spelers door het starten van de Game en er wordt een event afgevuurd zodat de buiten wereld weet wie welk land heeft.
+- Een event wordt afgevuurd wat aangeeft welke kleur speler aan de beurt is. 
+- De eerste beurt moet de speler legers op zijn landen zetten en volgen hier weer events voor.
+- Als alle spelers hun initiele legers op hun landen hebben gezet volgt de tweede beurt.
+- De speler kiest wat hij die ronde wil doen.
+- Voordurend check de game instantie of een speler nog wel landen heeft anders is de speler verslagen.
+- Als er nog maar een speler over is die landen heeft dan heeft deze gewonnen.
+- Wijziging aan een land / gebruiker / aantal legers even moet afdoende zijn om als speler op de hoogte te blijven van het spel verloop.
+- Kaarten inruilen moet een event voor komen.

@@ -1,0 +1,14 @@
+StyleCop in express
+http://stylecop.codeplex.com/wikipage?title=Running%20StyleCop%20in%20VS2005%20or%20VS%20Express&referringTitle=Documentation
+
+Event wanneer er iets wijzigd in de lijst.
+http://stackoverflow.com/questions/1299920/how-to-handle-add-to-list-event
+
+Communicatie tussen twee console apps.
+http://msdn.microsoft.com/en-us/library/bb546102.aspx
+
+Property Out Of Range Exception
+http://social.msdn.microsoft.com/forums/en-US/csharpgeneral/thread/16e127e6-42b9-4cb5-85c6-8c15f0e5d7c5
+
+enum out of range exception
+http://stackoverflow.com/questions/618305/enum-casting

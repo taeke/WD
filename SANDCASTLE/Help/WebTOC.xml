@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="60ad70f8-b9f6-45fe-8123-74b3fcd3380b" Title="WDGameEngine Namespace" Url="html/35fb84aa-84a7-5d17-6c06-e23718abe459.htm">
+    <HelpTOCNode Id="c537ea45-a66c-4a6d-aedb-eb4fe21a29fe" Title="Config Class" Url="html/1b91db68-4eb1-5d2c-78e2-9393f122b58b.htm">
+      <HelpTOCNode Title="Config Members" Url="html/08054bdd-f57f-cd0e-e497-eb0fe8990aad.htm" />
+      <HelpTOCNode Title="Config Constructor " Url="html/93c7a4e8-d024-f212-da65-21f4803b6da5.htm" />
+      <HelpTOCNode Title="Config Methods" Url="html/f34c0428-09b2-6c03-8130-37477bdbdcca.htm" />
+      <HelpTOCNode Id="d9b5ba0f-7328-464b-8fc3-4600b78be6a9" Title="Config Properties" Url="html/2bfd2063-67f6-bc3c-495a-23ef0d884bf9.htm">
+        <HelpTOCNode Title="MaximumCards Property " Url="html/eb0e03da-2d4e-72b4-c53f-027d9b5b994a.htm" />
+        <HelpTOCNode Title="MinimumNumberPlayers Property " Url="html/bed58d4e-4e89-b5cd-2484-b7cb80775a91.htm" />
+        <HelpTOCNode Title="NumberOfPlayersIntialArmies Property " Url="html/750244a9-7095-8a96-96b9-6c8fa725e1e3.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9570bce5-afb8-44ab-b6dc-e0f1b0fce37c" Title="Continent Class" Url="html/96e29fa7-f4a4-493c-dc74-f6a57384aaed.htm">
+      <HelpTOCNode Title="Continent Members" Url="html/a063d822-35f2-23a3-cf36-703a26806f1f.htm" />
+      <HelpTOCNode Title="Continent Constructor " Url="html/4b0a9c56-df70-6ad4-cd95-4d574c49499d.htm" />
+      <HelpTOCNode Title="Continent Methods" Url="html/e9bf69c6-3216-5f31-65dd-a30684aa731a.htm" />
+      <HelpTOCNode Id="63eb27d3-d533-4db0-949b-1f3647a77802" Title="Continent Properties" Url="html/0f7b987d-8015-c7ca-a9ea-7ac64a6eafb4.htm">
+        <HelpTOCNode Title="Countries Property " Url="html/42b04539-acff-71a5-32de-38dc94dad179.htm" />
+        <HelpTOCNode Title="NewArmiesForOwning Property " Url="html/6d9e6026-439b-d1b2-c826-dcfcf748fb6c.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f93a03a8-dad1-44ee-80d5-5299e6ae0f9a" Title="Country Class" Url="html/cf4c63a7-318a-457f-be2d-85d57c188b4b.htm">
+      <HelpTOCNode Title="Country Members" Url="html/2869a425-dadf-3ee9-fdf4-40e2903c8255.htm" />
+      <HelpTOCNode Title="Country Constructor " Url="html/19d09fa3-6af2-6117-71b2-a9de565efcd6.htm" />
+      <HelpTOCNode Title="Country Methods" Url="html/fc6478f4-89dc-5ce6-24bb-09d11330b9ff.htm" />
+      <HelpTOCNode Id="be3516ec-8532-412f-a9dc-297ff30fb551" Title="Country Properties" Url="html/cca36de5-9e2f-1157-e952-d73552c3e15a.htm">
+        <HelpTOCNode Title="Name Property " Url="html/ac105010-be2a-9464-9759-895c340c13c7.htm" />
+        <HelpTOCNode Title="Neighbours Property " Url="html/0379bafe-4602-e2ed-343a-01d1f7ba8292.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="28ae8b19-e64b-424b-a992-f2b8728857e3" Title="Game Class" Url="html/7213d243-a1de-075a-c431-84ca75bb536e.htm">
+      <HelpTOCNode Title="Game Members" Url="html/25b8b279-9cfd-a9e8-486d-efea78ffa6c7.htm" />
+      <HelpTOCNode Title="Game Constructor " Url="html/25647f5c-06ec-a7dc-b724-8c28efab6fa4.htm" />
+      <HelpTOCNode Id="45644f4e-2338-47ff-abf0-9fbe5435b9e6" Title="Game Methods" Url="html/668cea14-56dc-aee1-39cf-3d0f2061a000.htm">
+        <HelpTOCNode Title="AddPlayer Method " Url="html/a62ac064-d21c-576a-a565-570f6866c849.htm" />
+        <HelpTOCNode Title="Attack Method " Url="html/29b7a6b6-de8f-581b-359c-99e2104975f0.htm" />
+        <HelpTOCNode Title="ChooseTurnType Method " Url="html/929fd9a4-ed56-5048-eacf-a0976c3b4d6f.htm" />
+        <HelpTOCNode Title="ExchangeCards Method " Url="html/490589b2-85d1-280b-9e25-b32cc222031b.htm" />
+        <HelpTOCNode Title="GoToNextFase Method " Url="html/953cb597-d2c7-b3ac-4fdd-6890283ea523.htm" />
+        <HelpTOCNode Title="MoveArmies Method " Url="html/45658112-09df-d16b-b196-0d350432fec5.htm" />
+        <HelpTOCNode Title="OnPlayerCountryArmiesChanged Method " Url="html/6e64a776-8835-ce3e-ec86-3a9625638a5e.htm" />
+        <HelpTOCNode Title="OnPlayerGetsTurn Method " Url="html/87b0841e-1407-08f0-4f6d-4c2f3ce37094.htm" />
+        <HelpTOCNode Title="OnPlayerReceivesNewArmies Method " Url="html/aab0ed40-f159-092f-7589-5ab89a4a3e27.htm" />
+        <HelpTOCNode Title="OnPlayerReceivesNewCard Method " Url="html/207a3d2e-8411-994b-9e27-c6783279e411.htm" />
+        <HelpTOCNode Title="PlaceNewArmies Method " Url="html/17049b87-c66c-9683-f160-96a196ce99e9.htm" />
+        <HelpTOCNode Title="StartGame Method " Url="html/7831c30a-0c27-83b0-ef0d-656f5ec7c7dc.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="00574773-9c5c-4556-8028-629b2b519fb7" Title="Game Events" Url="html/65cd758c-b6ef-3707-813b-231243c0a2ec.htm">
+        <HelpTOCNode Title="PlayerCountryArmiesChanged Event" Url="html/de106496-6397-be2a-0e84-6965095ddbb8.htm" />
+        <HelpTOCNode Title="PlayerGetsTurn Event" Url="html/7c5d28e0-55ec-c6ba-3991-1f7fe630b870.htm" />
+        <HelpTOCNode Title="PlayerReceivesNewArmies Event" Url="html/1ede0293-07dc-70ee-6b2e-cb91e907fcfe.htm" />
+        <HelpTOCNode Title="PlayerReceivesNewCard Event" Url="html/8868eaa3-110d-3878-27c0-e5fac1b72dda.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d8397f5c-fad1-4ed8-8b75-cead275ca1b7" Title="LastAttackInfo Class" Url="html/77f7a994-5283-b6ea-7567-b154620c67ba.htm">
+      <HelpTOCNode Title="LastAttackInfo Members" Url="html/50f1e07c-3262-69bf-8d63-0ab5e86ec8ac.htm" />
+      <HelpTOCNode Title="LastAttackInfo Constructor " Url="html/f87e35b4-3542-c8ff-0e68-49e8e79dcc4c.htm" />
+      <HelpTOCNode Title="LastAttackInfo Methods" Url="html/7ac077ed-6db8-bfc5-f0d7-7f46b2ac43eb.htm" />
+      <HelpTOCNode Id="1d92e6cf-fdf2-4a75-8f4a-95e5adc11dff" Title="LastAttackInfo Properties" Url="html/e94c2291-7d7f-5128-5c12-f6e2dcf7a007.htm">
+        <HelpTOCNode Title="AttackerIsWinner Property " Url="html/6e2f06e9-bad5-158c-f6c1-5c7a81d31e4c.htm" />
+        <HelpTOCNode Title="AttackingArmies Property " Url="html/ec758052-62df-304f-f2d2-201104c36b8c.htm" />
+        <HelpTOCNode Title="AttackingCountry Property " Url="html/c2c53ed3-4c49-9877-0746-e49bb2ad4c3c.htm" />
+        <HelpTOCNode Title="DefendingCountry Property " Url="html/8a74d273-da61-38a1-265a-6d3c9e6bebe8.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7c326e73-12a7-4c8f-8bf2-1e1a86846d07" Title="Player Class" Url="html/8e9fc381-b617-c443-0f3d-288caf6b850b.htm">
+      <HelpTOCNode Title="Player Members" Url="html/2a555aae-22a1-f296-8f3c-fa75915f2fb1.htm" />
+      <HelpTOCNode Title="Player Constructor " Url="html/55bb50eb-02e0-52d1-794b-df635f520521.htm" />
+      <HelpTOCNode Id="18e3a6bb-8208-41fb-80df-4a12bd1ba2d1" Title="Player Methods" Url="html/f0dedd8f-1f10-9364-3a6a-fa9a9b25770f.htm">
+        <HelpTOCNode Id="c7b4fe77-bfd9-4e17-a19f-0abd55196a6d" Title="RollTheDices Method " Url="html/4ade150e-2284-5cac-ef00-ba73ced55bec.htm">
+          <HelpTOCNode Title="RollTheDices Method (Int32)" Url="html/bea1f208-6b66-2a9e-c603-8d9a1637a351.htm" />
+          <HelpTOCNode Title="RollTheDices Method (Country)" Url="html/3fac6e84-0e05-181b-969c-db9d6ad6159e.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="7318e790-e5d4-426c-a343-77749c75fa83" Title="Player Properties" Url="html/2afbee47-d718-9dd2-715b-d039455bef65.htm">
+        <HelpTOCNode Title="Cards Property " Url="html/47a2caa9-cdf2-fadf-fb5f-d1842977ddea.htm" />
+        <HelpTOCNode Title="Color Property " Url="html/9ed86185-b546-d52a-6c76-29e107843de7.htm" />
+        <HelpTOCNode Title="CountryNumberOfArmies Property " Url="html/2e08ba5f-10b5-11a9-3ac3-3a51418e52b4.htm" />
+        <HelpTOCNode Title="Dice Property " Url="html/044f64b0-9bf5-2985-b895-73775d703adc.htm" />
+        <HelpTOCNode Title="NumberOfNewArmies Property " Url="html/c9db645b-0c33-a184-41db-43a6b7ee3506.htm" />
+        <HelpTOCNode Title="TurnType Property " Url="html/6c084b88-55dc-f314-ebe8-c6d000e0a277.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3dbef250-c7f9-4388-b2e0-748ef9ebdad9" Title="World Class" Url="html/346eebef-319c-2f11-8fb4-11c6f10b09dd.htm">
+      <HelpTOCNode Title="World Members" Url="html/9b0ab4de-afe0-4720-ec2d-05d7adc3ad7c.htm" />
+      <HelpTOCNode Title="World Constructor " Url="html/9f459269-2952-47c8-c73d-977ed347cc5c.htm" />
+      <HelpTOCNode Id="0495c685-eea7-461b-91f5-e9e9e0fbe210" Title="World Methods" Url="html/8c875810-a08c-4345-fc69-929b17e6b871.htm">
+        <HelpTOCNode Title="LoadContinentsAndCountries Method " Url="html/2246f376-7176-fd29-660e-a2e83b57fc31.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0b89f6a8-9da2-45d0-b4ff-ccae12e55ace" Title="World Properties" Url="html/bdaee90b-693f-b57d-427a-8b890a379690.htm">
+        <HelpTOCNode Title="Continents Property " Url="html/249cf019-4bbe-5efb-5adc-9f6e45530f58.htm" />
+        <HelpTOCNode Title="Countries Property " Url="html/0d1c5022-4f95-fd61-1258-63401531d7e9.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="4e1ddd22-4913-4903-9184-ae95dbd77a52" Title="WDGameEngine.Enums Namespace" Url="html/5559eded-c88d-be20-56c5-9e484e8f4b3c.htm">
+    <HelpTOCNode Title="CardType Enumeration" Url="html/c5b0b805-03f4-df99-9cb6-a3b675615d74.htm" />
+    <HelpTOCNode Title="GameFase Enumeration" Url="html/b45876a2-a673-5ec0-e571-079b7cc981c7.htm" />
+    <HelpTOCNode Title="TurnType Enumeration" Url="html/692ca98a-1a40-9f57-b577-4b7986119ac4.htm" />
+  </HelpTOCNode>
+  <HelpTOCNode Id="3302997e-e3f7-40d3-8e81-ddbf831d85f3" Title="WDGameEngine.EventArgs Namespace" Url="html/50a51729-8cfe-0bd9-9a0e-70422ecae2ac.htm">
+    <HelpTOCNode Id="3f30441f-7657-4b8c-bcef-e08cf5939827" Title="PlayerCountryArmiesChangedEventArgs Class" Url="html/2a8b84b5-316a-1a5e-e96e-60fe4bec8809.htm">
+      <HelpTOCNode Title="PlayerCountryArmiesChangedEventArgs Members" Url="html/3e47cb88-6a44-32fd-4c40-ce110d34416a.htm" />
+      <HelpTOCNode Title="PlayerCountryArmiesChangedEventArgs Constructor " Url="html/0ed8ef2f-d77d-b5f3-b0cf-bb51862140ed.htm" />
+      <HelpTOCNode Id="1d8381c1-67af-4969-a15d-af77c1c8c61e" Title="PlayerCountryArmiesChangedEventArgs Fields" Url="html/9d41500f-45d1-dceb-c3a7-ca04d36f9d3b.htm">
+        <HelpTOCNode Title="Armies Field" Url="html/63071991-7243-8d3f-0ebc-451ab340d4dc.htm" />
+        <HelpTOCNode Title="Country Field" Url="html/bffe8c67-0536-9390-2af4-8865da26a416.htm" />
+        <HelpTOCNode Title="PlayerColor Field" Url="html/63e2f512-df16-998b-ff8b-b8400ef3e0df.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PlayerCountryArmiesChangedEventArgs Methods" Url="html/f71eee26-68bf-076f-052e-50b85d8a2605.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="775f6d1d-858e-4b0a-96d3-f214b29fb87e" Title="PlayerEventArgs Class" Url="html/b8f5b173-370a-2794-af44-92ce95d2e254.htm">
+      <HelpTOCNode Title="PlayerEventArgs Members" Url="html/cb4522e7-db7f-d195-f201-28173c7cb51b.htm" />
+      <HelpTOCNode Title="PlayerEventArgs Constructor " Url="html/06b7760b-f2e8-b651-75d0-45c5ad1ddf05.htm" />
+      <HelpTOCNode Id="f7809c18-b601-4cfa-a020-bb750bac3b21" Title="PlayerEventArgs Fields" Url="html/958942d8-2c4a-07dd-9e70-a829d0795bdb.htm">
+        <HelpTOCNode Title="PlayerColor Field" Url="html/d234c69a-1795-e1b9-0479-fd2b9cb6d26f.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PlayerEventArgs Methods" Url="html/ab110556-f8e5-c38b-2067-89cd22fb093d.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a54a3cc0-bba6-4de4-a748-e9fc978ec5cd" Title="PlayerReceivesNewArmiesEventArgs Class" Url="html/2a35fbd5-e28f-a74a-55c6-1ab46bd4f666.htm">
+      <HelpTOCNode Title="PlayerReceivesNewArmiesEventArgs Members" Url="html/8ffd5a54-25e2-9233-1779-81ece258cc79.htm" />
+      <HelpTOCNode Title="PlayerReceivesNewArmiesEventArgs Constructor " Url="html/6883dd4c-bc1a-04e0-94aa-72020cef0d3b.htm" />
+      <HelpTOCNode Id="eb92b82d-5149-424b-aa77-67313849d0e7" Title="PlayerReceivesNewArmiesEventArgs Fields" Url="html/b414a336-5d4d-26a6-f3cf-0f91f3a6e5d9.htm">
+        <HelpTOCNode Title="Armies Field" Url="html/0bd11611-e436-701e-1129-01881e95ed2c.htm" />
+        <HelpTOCNode Title="PlayerColor Field" Url="html/3a1bd8e0-1929-9ef4-a95c-7397f79b9d68.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PlayerReceivesNewArmiesEventArgs Methods" Url="html/ca0cfb44-a0e6-fc57-d3b4-85240525275c.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="1de6efcf-350a-4328-af22-e0207f775a2d" Title="PlayerReceivesNewCardEventArgs Class" Url="html/22e07c4e-4aa9-2509-eed1-eee6691ad551.htm">
+      <HelpTOCNode Title="PlayerReceivesNewCardEventArgs Members" Url="html/bbae1432-f337-dff7-9c2a-3be8b9fe63db.htm" />
+      <HelpTOCNode Title="PlayerReceivesNewCardEventArgs Constructor " Url="html/e688ac3a-c9a4-1b5f-6ce1-3333f5f7ab63.htm" />
+      <HelpTOCNode Id="11455fea-5020-48a5-b70e-bc6e842afdb5" Title="PlayerReceivesNewCardEventArgs Fields" Url="html/782baf21-3175-7a8e-02e6-e44a0fc73c10.htm">
+        <HelpTOCNode Title="CardType Field" Url="html/0f74526f-d052-8990-82ca-ad73b0be7aa4.htm" />
+        <HelpTOCNode Title="PlayerColor Field" Url="html/b9b258fb-410b-7371-8220-6330e4123eaf.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PlayerReceivesNewCardEventArgs Methods" Url="html/27a4eb53-4c69-5583-35dc-dec291dd7e3c.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7bcee543-8efc-41c5-8ecb-d68685fee5ef" Title="WDGameEngine.Interfaces Namespace" Url="html/b4d946fd-98e0-5ec9-8c27-9878f423b728.htm">
+    <HelpTOCNode Id="7c9532cc-8eb7-417b-ad65-b166314c4722" Title="IConfig Interface" Url="html/fa096b08-e8f1-a035-3916-a3ff2fcdc6c3.htm">
+      <HelpTOCNode Title="IConfig Members" Url="html/884678c4-f205-0ca6-974d-bb35606f48e9.htm" />
+      <HelpTOCNode Id="c320b014-e7fd-4fd0-bf3c-5eb7b8973871" Title="IConfig Properties" Url="html/a94def1f-5876-09db-d68c-7c340b907dc4.htm">
+        <HelpTOCNode Title="MaximumCards Property " Url="html/4d501700-1476-918c-04f9-27c2fe949ae1.htm" />
+        <HelpTOCNode Title="MinimumNumberPlayers Property " Url="html/59725d3c-e455-e6eb-68e5-bd290485baaa.htm" />
+        <HelpTOCNode Title="NumberOfPlayersIntialArmies Property " Url="html/4004a310-a1cb-604c-efaa-45528fad52f7.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bba971ff-05e2-4ff1-bde0-e2ca55dfacdf" Title="IGame Interface" Url="html/f83690a8-8ea9-e06d-bb8a-96814388f377.htm">
+      <HelpTOCNode Title="IGame Members" Url="html/da23882c-0d65-9bde-8a10-da454750eeab.htm" />
+      <HelpTOCNode Id="a63cf144-4169-47f4-842a-f07407bf4c3b" Title="IGame Methods" Url="html/5b88052e-2b30-36f4-fbd3-46dd7b50bd79.htm">
+        <HelpTOCNode Title="AddPlayer Method " Url="html/7070c912-18a7-eb7f-6340-9edf33969a68.htm" />
+        <HelpTOCNode Title="Attack Method " Url="html/2635b553-911c-8a4d-18cb-3dc762ec5326.htm" />
+        <HelpTOCNode Title="ChooseTurnType Method " Url="html/d3998a7f-4fec-12af-5769-4c56f2a793b6.htm" />
+        <HelpTOCNode Title="ExchangeCards Method " Url="html/831e7c83-5879-ae5a-06ca-20673b9fc827.htm" />
+        <HelpTOCNode Title="GoToNextFase Method " Url="html/0eccbe4f-ef39-05fc-dfb5-2d2e90004a85.htm" />
+        <HelpTOCNode Title="MoveArmies Method " Url="html/1cd0ac17-b40a-c379-b7c8-f3f52d911872.htm" />
+        <HelpTOCNode Title="PlaceNewArmies Method " Url="html/7730310c-dc57-82d2-a460-9c5f523789f6.htm" />
+        <HelpTOCNode Title="StartGame Method " Url="html/a7ae966d-a6b1-1e21-c69a-7460e8c20b7c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6924156e-09bd-4eb7-86b2-bd8c6827970d" Title="IGame Events" Url="html/a643271a-1960-f275-0e4e-f37b1c1db72e.htm">
+        <HelpTOCNode Title="PlayerCountryArmiesChanged Event" Url="html/57ebc052-8c26-e302-0684-0881c69439c2.htm" />
+        <HelpTOCNode Title="PlayerGetsTurn Event" Url="html/e3c7cb8b-ed39-8b73-51af-5f8f2d37bca9.htm" />
+        <HelpTOCNode Title="PlayerReceivesNewArmies Event" Url="html/0e681c86-98a0-fdc8-4904-a47449788f60.htm" />
+        <HelpTOCNode Title="PlayerReceivesNewCard Event" Url="html/1a784275-3325-cd6d-62c9-1f3813c5a57a.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2918b613-0a59-4b12-857e-04f8792ca47f" Title="IPlayer Interface" Url="html/69663e25-f5d0-b87b-94d4-63ff4e862263.htm">
+      <HelpTOCNode Title="IPlayer Members" Url="html/60ba5d51-066b-37bc-5256-b6373ee24e3c.htm" />
+      <HelpTOCNode Id="54df68ad-e800-44fa-b7ce-ce1ef027f6d6" Title="IPlayer Methods" Url="html/10a751cb-a924-4c81-2bc9-570180a2446d.htm">
+        <HelpTOCNode Id="d61d745e-f5cc-47e4-8a65-5416e659aea2" Title="RollTheDices Method " Url="html/83a3801c-1f15-6167-824d-7591072cd0b9.htm">
+          <HelpTOCNode Title="RollTheDices Method (Int32)" Url="html/b2e55b1b-6e48-86fb-c526-cc42015fe7c9.htm" />
+          <HelpTOCNode Title="RollTheDices Method (Country)" Url="html/a06638d4-4a6d-cf0b-af4e-a456d3f9e8e2.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="6353b61e-8c09-49d1-b0e0-5493623409ad" Title="IPlayer Properties" Url="html/64425373-cf07-5a49-c992-db2e89be6369.htm">
+        <HelpTOCNode Title="Cards Property " Url="html/297d03c1-f20c-8e4f-4e64-80b0acba30b8.htm" />
+        <HelpTOCNode Title="Color Property " Url="html/5fcc6607-4f08-4f99-e9a3-24a4fc0f8909.htm" />
+        <HelpTOCNode Title="CountryNumberOfArmies Property " Url="html/f3f30c5a-7372-8a60-40d1-161359bf8d21.htm" />
+        <HelpTOCNode Title="Dice Property " Url="html/30b491d0-d568-2b94-c736-2a4679c81c5c.htm" />
+        <HelpTOCNode Title="NumberOfNewArmies Property " Url="html/e5629d71-457d-097f-4924-a9454990829f.htm" />
+        <HelpTOCNode Title="TurnType Property " Url="html/f8f3194e-8888-515a-0caf-e4371aa81cc0.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="54e2dccf-1fd7-4697-9108-2b9c347f1780" Title="IWorld Interface" Url="html/a4c6e308-3fac-5a24-0fc5-ff1f8ee0c659.htm">
+      <HelpTOCNode Title="IWorld Members" Url="html/de213ab6-73bc-4424-ab9e-db5b2f7dd683.htm" />
+      <HelpTOCNode Id="13ba9194-288b-49d9-a10b-837bbf9423e2" Title="IWorld Methods" Url="html/c1a2d551-38a7-df16-d09e-50ffcab0360c.htm">
+        <HelpTOCNode Title="LoadContinentsAndCountries Method " Url="html/4452e12c-b861-e6b9-87f2-42cc92f7d00a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a268acc1-31c9-4b3b-8944-dca7a867ab0b" Title="IWorld Properties" Url="html/f7bc9821-5733-7860-845b-dcdb64caa485.htm">
+        <HelpTOCNode Title="Continents Property " Url="html/4a664d9e-c715-5a70-5bcc-9fa624feb5a5.htm" />
+        <HelpTOCNode Title="Countries Property " Url="html/5ac11414-0433-443e-70f8-79ec88ec7b99.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0f6018c3-d105-4ce6-aefe-a8de2fa91bb6" Title="Randomize Class" Url="html/2a463106-1a0b-2324-85d7-220d65c8889d.htm">
+      <HelpTOCNode Title="Randomize Members" Url="html/6fd0980e-e19f-9299-b5f1-e7dfa68faf1b.htm" />
+      <HelpTOCNode Title="Randomize Constructor " Url="html/98a97dd4-9a45-07ef-9d51-e6780e05bd1d.htm" />
+      <HelpTOCNode Id="1180842e-f58a-4966-825e-875ef03a88f0" Title="Randomize Methods" Url="html/1d0aaa10-c912-965e-8db9-2874861fa593.htm">
+        <HelpTOCNode Title="Next Method " Url="html/3a080e6f-ab7f-7d83-ae3d-32ad46f3467b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>
