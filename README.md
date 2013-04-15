@@ -1,6 +1,6 @@
 World Domination
 ==
-World Domination a name i made up for an old board game we all know. I didn't want to use the orginally 
+World Domination a name i made up for an old board game we all know. I didn't want to use the orginall 
 name because it is probably copyrighted and don't want any problems with it. But if i tell you it is
 played on a board with a picture of a world map, you have to place pieces which stand for armies
 on countries, dices are use when you attack another player and you win if you conquer the world. You 
@@ -38,7 +38,7 @@ I game up with the following setup:
 
 Technique used
 --------------
-- Visual Studie Express 2012 for Windows Desktop
+- Visual Studio Express 2012 for Windows Desktop
 - http://nancyfx.org/ for hosting the website inside controller.exe
 - http://signalr.net/ for pushing the new game state to the browsers viewing the website.
 - Named pipes for communication with the bots.
