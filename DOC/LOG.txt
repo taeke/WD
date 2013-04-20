@@ -1,3 +1,7 @@
+http://blog.maskalik.com/asp-net/sqlite-simple-database-with-dapper
+
+
+
 CardType
 GameFase
 RollType

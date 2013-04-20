@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Randomize.cs">
+// <copyright file="IWDRepository.cs">
 // Taeke van der Veen april 2013
 // </copyright>
 // Visual Studio Express 2012 for Windows Desktop
@@ -7,17 +7,23 @@
 
 namespace WDGameEngine.Interfaces
 {
+    using System.Collections.Generic;
+
     /// <summary>
-    /// There is not interface for the default Random function but for testing it can be handy
-    /// to generate not ramdom numbers. Use an abstract class so we can Mock it.
+    /// Loading the persistant part of the <see cref="IGame"/> from a database.
     /// </summary>
-    public abstract class Randomize
+    public interface IWDRepository
     {
         /// <summary>
-        /// The method we need to Mock
+        /// Gets the list of <see cref="Continent"/>.
         /// </summary>
-        /// <param name="maxValue"> The maximum value Next may return. </param>
-        /// <returns> A number which will be random when the Random function is used. </returns>
-        public abstract int Next(int maxValue);
+        /// <returns></returns>
+        List<Continent> GetContinents();
+
+        /// <summary>
+        /// Gets the list of <see cref="Neighbours"/>.
+        /// </summary>
+        /// <returns></returns>
+        List<Neighbours> GetNeighbours();
     }
 }

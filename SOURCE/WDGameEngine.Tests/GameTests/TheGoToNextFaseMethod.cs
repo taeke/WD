@@ -2,17 +2,11 @@
 // <copyright file="TheGoToNextFaseMethod.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
 {
-    //// TODO : Check if any of these need testing.
-    //// None => PlaceInitialArmies
-    //// Attack => MoveArmiesAfterAttack
-    //// Attack => MoveArmiesEndOfTurn
-    //// MoveArmiesAfterAttack => Attack
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -58,9 +52,9 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.ChooseTurnType, TurnType.Attack);
 
             // Assert we can't test for GameFase.ChoosTurnType because this gets set after the
-            // receivesNewArmies event. So we have to count the first four also which are the intial
+            // receivesNewArmies event. So we have to count the first serie also which are the intial
             // armies and after they are placed on a Country the 0.
-            Assert.AreEqual(5, this.EventHelper.PlayerReceivesNewArmiesCount);
+            Assert.AreEqual(7, this.EventHelper.PlayerReceivesNewArmiesCount);
         }
 
         //// ChooseTurnType => ExchangeCards
@@ -79,9 +73,9 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert PlaceInitialArmies for both => 2. Change current player place the initial armies both => 2 => Chooseturntype 
+            // Assert PlaceInitialArmies for both twice => 4. Change current player place the initial armies both => 2 => Chooseturntype 
             // continents => 1 GetArmiesForCountries => 1 
-            Assert.AreEqual(6, this.EventHelper.PlayerReceivesNewArmiesCount);
+            Assert.AreEqual(8, this.EventHelper.PlayerReceivesNewArmiesCount);
         }
 
         /// <summary>
@@ -98,9 +92,9 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert PlaceInitialArmies for both => 2. Change current player place the initial armies both => 2 => Chooseturntype 
+            // Assert PlaceInitialArmies for both twice => 4. Change current player place the initial armies both => 2 => Chooseturntype 
             // continents => 1 attack => 0 
-            Assert.AreEqual(5, this.EventHelper.PlayerReceivesNewArmiesCount);
+            Assert.AreEqual(7, this.EventHelper.PlayerReceivesNewArmiesCount);
         }
 
         /// <summary>
@@ -156,7 +150,9 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert
+            // Assert if we can attack without exception we are in Attack fase
+            this.EventHelper.SettingUpAttackingAndDefendingDices(true);
+            this.Game.Attack("1", "2", 2);
         }
 
         //// PlaceNewArmies => ChooseTurnType
@@ -176,7 +172,8 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert
+            // Assert if we can ChooseTurnType without exception we are in ChooseTurnType fase.
+            this.Game.ChooseTurnType(TurnType.GetArmiesForCountries);
         }
 
         /// <summary>
@@ -196,6 +193,7 @@ namespace WDGameEngine.Tests.GameTests
             this.Game.GoToNextFase();
 
             // Assert
+            Assert.AreEqual(1, this.EventHelper.PlayerGetsTurnCount);
         }
 
         //// PlaceInitialArmies => PlaceInitialArmies
@@ -249,7 +247,8 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert
+            // Assert if we can MoveArmies without exception we are in MoveArmies fase.
+            this.Game.MoveArmies("1", "5", 2);
         }
 
         //// ExchangeCards => PlaceNewArmies
@@ -271,7 +270,8 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
-            // Assert
+            // Assert if we can PlaceNewArmies without exception we are in PlaceNewArmies fase. 
+            this.Game.PlaceNewArmies(1, "1");
         }
 
         /// <summary>
@@ -327,7 +327,25 @@ namespace WDGameEngine.Tests.GameTests
             // Act
             this.Game.GoToNextFase();
 
+            // Assert if we can ChooseTurnType without exception we are in ChooseTurnType fase. 
+            this.Game.ChooseTurnType(TurnType.GetArmiesForCountries);
+        }
+
+        /// <summary>
+        /// Testing if calling GoToNextFase after the game is ended throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GoToNextFaseAfterGameIsEndedShouldThrowException()
+        { 
+            // Arrange
+            this.SettingUpTillEndOfGame();
+
+            // Act
+            this.Game.GoToNextFase();
+
             // Assert
+            // Assertion is done bij ExpectedException attribute.
         }
 
         //// Testing if GoToNextFase in MoveArmiesAfterAttack goes to Attack fase is done by SettingUpTillGameFase.

@@ -2,7 +2,7 @@
 // <copyright file="RandomHelper.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -46,7 +46,7 @@ namespace WDGameEngine.Tests.GameTests
 
         /// <summary>
         /// Generate pseudo ramdom numbers for the tests. We know countries will be divide by starting to
-        /// ask for a random number between 15 and 0. The last call for dividing the <see cref="Country"/>
+        /// ask for a random number between 7 and 0. The last call for dividing the <see cref="Country"/>
         /// will be 0. So that is the moment to reset this bool. This way we control the way the <see cref="Country"/>
         /// collections is divide.
         /// </summary>
@@ -54,20 +54,25 @@ namespace WDGameEngine.Tests.GameTests
         /// <returns> A pseudo random number. </returns>
         private int RandomNext(int maxValue)
         {
-            if (maxValue == 15)
+            if (maxValue == 7)
             {
                 this.isDivideCountries = true;
             }
 
             if (this.isDivideCountries)
             {
-                if (maxValue % 2 != 0)
+                switch (maxValue)
                 {
-                    return (int)maxValue / 2;
-                }
-                else
-                {
-                    return ((int)maxValue / 2) + ((int)maxValue / 2);
+                    case 7: return 0;
+                    case 6: return 1;
+                    case 5: return 0;
+                    case 4: return 0;
+                    case 3: return 0;
+                    case 2: return 1;
+                    case 1: return 0;
+                    case 0: return 0;
+                    default:
+                        break;
                 }
             }
 

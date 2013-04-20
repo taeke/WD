@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ATTACK_DONT_OWN_COUNTRY" xml:space="preserve">
+    <value>Can't attack. You don't own the country from which you want to attack.</value>
+  </data>
+  <data name="ATTACK_ONLY_NEIGHBOUR" xml:space="preserve">
+    <value>Can't attack. You can only attack a country from a neighbouring Country.</value>
+  </data>
+  <data name="ATTACK_OWN_COUNTRY" xml:space="preserve">
+    <value>Can't attack. You can't attack a country you allready own.</value>
+  </data>
+  <data name="ATTACK_WITH_TO_MANY_ARMIES" xml:space="preserve">
+    <value>Can't attack. When you attack with more then three countries you must leave three armies on your country or else atleast one or two depending on how much used in the attack.</value>
+  </data>
+  <data name="CANT_ADDPLAYER_IF_GAME_STARTED" xml:space="preserve">
+    <value>Can't add a player after the game is started.</value>
+  </data>
+  <data name="CANT_ADD_MORE_PLAYERS_AS_COLORS" xml:space="preserve">
+    <value>Can't add a player because there are no more colors left in playerColorrs</value>
+  </data>
+  <data name="CANT_ATTACK_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call Attack. The game is not started.</value>
+  </data>
+  <data name="CANT_ATTACK_NOT_IN_FASE" xml:space="preserve">
+    <value>Can't call Attack. The game is not in the Attack fase.</value>
+  </data>
+  <data name="CANT_CHOOSETURNTYPE_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call ChooseTurnType . The game is not started.</value>
+  </data>
+  <data name="CANT_CHOOSETURNTYPE_NOT_IN_FASE" xml:space="preserve">
+    <value>Can't call ChooseTurnType . The game is not in the ChooseTurnType fase.</value>
+  </data>
+  <data name="CANT_EXCHANGECARDS_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call ExchangeCards. The game is not started. </value>
+  </data>
+  <data name="CANT_EXCHANGECARDS_NOT_IN_FASE" xml:space="preserve">
+    <value>Can't call ExchangeCards. The game is not in the ExchangeCards fase.</value>
+  </data>
+  <data name="CANT_GOTONEXTFASE_GAME_IS_ENDED" xml:space="preserve">
+    <value>Can't call GoToNextFase. The game is ended.</value>
+  </data>
+  <data name="CANT_GOTONEXTFASE_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call GoToNextFase. The game is not started.</value>
+  </data>
+  <data name="CANT_MOVEARMIES_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call MoveArmies. The game is not started.</value>
+  </data>
+  <data name="CANT_MOVEARMIES_NOT_IN_FASE" xml:space="preserve">
+    <value>Can't call MoveArmies. The game is not in the MoveArmiesAfterAttack or MoveArmiesEndOfTurn fase.</value>
+  </data>
+  <data name="CANT_MOVE_ALL_OR_MORE_ARMIES" xml:space="preserve">
+    <value>Can't MoveArmies. You can't move more or all armies on the a Country to the other Country. You must leace at least one armie on the the Country.</value>
+  </data>
+  <data name="CANT_MOVE_FROM_OTHER_COUNTRIES" xml:space="preserve">
+    <value>Can't MoveArmies. You can only move armies from or to a Country you just attacked.</value>
+  </data>
+  <data name="CANT_PLACENEWARMIES_GAME_NOT_STARTED" xml:space="preserve">
+    <value>Can't call PlaceNewArmies. The game is not started.</value>
+  </data>
+  <data name="CANT_PLACENEWARMIES_NOT_IN_FASE" xml:space="preserve">
+    <value>Can't call PlaceNewArmies. The game is not in the PlaceNewArmies or PlaceInitialArmies fase.</value>
+  </data>
+  <data name="CANT_PLACE_MORE_AS_OWNED" xml:space="preserve">
+    <value>Can't PlaceNewArmies. You can't place more armies as you own.</value>
+  </data>
+  <data name="CANT_START_WITH_LESS_MIN_PLAYERS" xml:space="preserve">
+    <value>Can't start the game. There are less players added as defined in MinimumNumberPlayers in the config.</value>
+  </data>
+  <data name="FROM_AND_TO_CANT_BE_THE_SAME" xml:space="preserve">
+    <value>Can't MoveArmies. The to and from country can't be the same.</value>
+  </data>
+  <data name="GAME_ALREADY_STARTED" xml:space="preserve">
+    <value>Can't start the game.The game is already started.</value>
+  </data>
+  <data name="HOLD_TO_MANY_CARDS" xml:space="preserve">
+    <value>Can't GoToNextFase. You hold to many cards. Exchanges cards before calling GoToNextFase.</value>
+  </data>
+  <data name="MOVEARMIES_DONT_OWN_COUNTRY" xml:space="preserve">
+    <value>Can't MoveArmies. You must own the to and from country.</value>
+  </data>
+  <data name="MOVE_ONLY_NEIGHBOUR" xml:space="preserve">
+    <value>Can't MoveArmies. You can only move to a country from a neighbouring country.</value>
+  </data>
+  <data name="MOVE_ONLY_ONCE_IN_A_TURN" xml:space="preserve">
+    <value>Can't call MoveArmies. You can only move armies once in a fase. Call GoToNextFase.</value>
+  </data>
+  <data name="MUST_ATTACK_AT_LEAST_ONE_ARMIE" xml:space="preserve">
+    <value>Can't attack. You must at least attack with one armie.</value>
+  </data>
+  <data name="MUST_CHOOSETURNTYPE" xml:space="preserve">
+    <value>Can't GoToNextFase. You must choose a TurnType before calling GoToNextFase.</value>
+  </data>
+  <data name="MUST_LEAVE_ATTACKING_COUNTRIES" xml:space="preserve">
+    <value>Can't MoveArmies. You must at least leave the amount of armies used in the last attack on the country you just won.</value>
+  </data>
+  <data name="MUST_MOVE_AT_LEAST_ONE_ARMIE" xml:space="preserve">
+    <value>Can't MoveArmies. You must at least move one country.</value>
+  </data>
+  <data name="MUST_PLACE_AT_LEAST_ONE_ARMIE" xml:space="preserve">
+    <value>Can't PlaceNewArmies. You must at least place one country.</value>
+  </data>
+  <data name="NOT_A_VALID_COUNTRY_NAME" xml:space="preserve">
+    <value>Can't PlaceNewArmies. You did not provide a valid country Name.</value>
+  </data>
+  <data name="NOT_LOADED_WORLD_CORRECT" xml:space="preserve">
+    <value>When calling LoadContinentsAndCountries there where no or not enough countries and/ord continents loaded.</value>
+  </data>
+  <data name="PLACENEWARMIES_DONT_OWN_COUNTRY" xml:space="preserve">
+    <value>Can't PlaceNewArmies. You don't own this country.</value>
+  </data>
+  <data name="PLACE_ALL_NEW_ARMIES" xml:space="preserve">
+    <value>Can't GoToNextFase. You must place all new armies before calling GoToNextFase.</value>
+  </data>
+  <data name="PLAYER_COLORS_COUNT_SMALLER_MIN_PLAYERS" xml:space="preserve">
+    <value>The amount of playerColors can't be smaller as the MinimumNumberPlayers defined in the config.</value>
+  </data>
+  <data name="WRONG_TURNTYPE" xml:space="preserve">
+    <value>Can't GoToNextFase. Something is wrong TurnType should be a valid values but is not.</value>
+  </data>
+</root>

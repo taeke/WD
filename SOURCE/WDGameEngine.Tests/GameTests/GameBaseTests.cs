@@ -1,14 +1,12 @@
-﻿//-------------------------------------------------------------------------------------------------------------------------------------------------
+﻿//-------------------------------------------------------------------------------------------------
 // <copyright file="GameBaseTests.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+// Visual Studio Express 2012 for Windows Desktop
+//--------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
 {
-    //// TODO : GameFase changing on the return value of GoToNextFase is not working. The change is communicated back to late. So change it.
-
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
@@ -44,7 +42,7 @@ namespace WDGameEngine.Tests.GameTests
         /// <summary>
         /// Backing field for ConfigHelper.
         /// </summary>
-        private ConfigHelper configHelper;
+        private Config config;
 
         /// <summary>
         /// The instance of <see cref="RandomHelper"/>.
@@ -101,17 +99,6 @@ namespace WDGameEngine.Tests.GameTests
         }
 
         /// <summary>
-        /// The instance of <see cref="ConfigHelper"/>
-        /// </summary>
-        protected ConfigHelper ConfigHelper
-        {
-            get
-            {
-                return this.configHelper;
-            }
-        }
-
-        /// <summary>
         /// Direct acces to this.EventHelper.CurrentPlayerHelper.Player because it is used a lot.
         /// </summary>
         protected IPlayer CurrentPlayer
@@ -130,7 +117,12 @@ namespace WDGameEngine.Tests.GameTests
         {
             this.worldHelper = new WorldHelper();
             this.playerHelpers = new List<PlayerHelper>();
-            this.configHelper = new ConfigHelper();
+            this.config = new Config();
+            this.config.MinimumNumberPlayers = 2;
+            Dictionary<int, int> numberOfPlayersIntialArmies = new Dictionary<int, int>();
+            numberOfPlayersIntialArmies.Add(2, 40);
+            this.config.NumberOfPlayersIntialArmies = numberOfPlayersIntialArmies;
+            this.config.MaximumCards = 5;
             this.randomHelper = new RandomHelper();
             this.game = this.BuildTestGame();
             this.eventHelper = new EventHelper(this.game, this.playerHelpers, this.worldHelper.World);
@@ -180,7 +172,7 @@ namespace WDGameEngine.Tests.GameTests
                 return;
             }
 
-            this.game.PlaceNewArmies(this.CurrentPlayer.NumberOfNewArmies, "5");
+            this.game.PlaceNewArmies(this.CurrentPlayer.NumberOfNewArmies, "1");
             this.eventHelper.CurrentGameFase = GameFase.Attack;
             this.game.GoToNextFase();
             if (gameFase == GameFase.Attack)
@@ -189,8 +181,7 @@ namespace WDGameEngine.Tests.GameTests
             }
 
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
-            Country country = this.eventHelper.CurrentPlayerHelper.CountryNumberOfArmies.First(c => c.Key.Name == "4").Key;
-            this.game.Attack("4", "8", this.CurrentPlayer.CountryNumberOfArmies[country] - 3);
+            this.game.Attack("1", "2", 24);
             this.eventHelper.CurrentGameFase = GameFase.MoveArmiesAfterAttack;
             this.game.GoToNextFase();
             if (gameFase == GameFase.MoveArmiesAfterAttack)
@@ -206,6 +197,28 @@ namespace WDGameEngine.Tests.GameTests
             {
                 return;
             }
+        }
+
+        /// <summary>
+        /// For some tests we need to bring the <see cref="Game"/> instance in the end of game state
+        /// before  we can start the real test.
+        /// </summary>
+        protected void SettingUpTillEndOfGame()
+        {
+            this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
+            this.game.GoToNextFase(); // Attack
+            this.eventHelper.CurrentGameFase = GameFase.Attack;
+            Country country;
+            country = this.eventHelper.CurrentPlayerHelper.CountryNumberOfArmies.First(c => c.Key.Name == "2").Key;
+            this.game.Attack("2", "3", this.CurrentPlayer.CountryNumberOfArmies[country] - 3);
+            this.game.GoToNextFase(); // MoveArmiesAfterAttack
+            this.game.GoToNextFase(); // Attack
+            country = this.eventHelper.CurrentPlayerHelper.CountryNumberOfArmies.First(c => c.Key.Name == "3").Key;
+            this.game.Attack("3", "7", this.CurrentPlayer.CountryNumberOfArmies[country] - 3);
+            this.game.GoToNextFase(); // MoveArmiesAfterAttack
+            this.game.GoToNextFase(); // Attack
+            country = this.eventHelper.CurrentPlayerHelper.CountryNumberOfArmies.First(c => c.Key.Name == "7").Key;
+            this.game.Attack("7", "6", this.CurrentPlayer.CountryNumberOfArmies[country] - 3);
         }
 
         /// <summary>
@@ -232,7 +245,7 @@ namespace WDGameEngine.Tests.GameTests
                     this.playerHelpers.Add(playerHelper);
                     return playerHelper.Player;
                 },
-                this.configHelper.Config,
+                this.config,
                 this.randomHelper.Random);
         }
     }

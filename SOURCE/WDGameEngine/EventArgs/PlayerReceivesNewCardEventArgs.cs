@@ -2,13 +2,14 @@
 // <copyright file="PlayerReceivesNewCardEventArgs.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.EventArgs
 {
     using System.Drawing;
     using WDGameEngine.Enums;
+    using WDGameEngine.Interfaces;
 
     /// <summary>
     /// Information about a new <see cref="CardType"/> for an <see cref="IPlayer"/>.
@@ -21,7 +22,7 @@ namespace WDGameEngine.EventArgs
         public readonly Color PlayerColor;
 
         /// <summary>
-        /// The <see cref="CardType"/> this <see cref="IPlayer"/>.
+        /// The <see cref="CardType"/> this <see cref="IPlayer"/> receives.
         /// </summary>
         public readonly CardType CardType;
 

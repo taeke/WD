@@ -39,8 +39,13 @@ I game up with the following setup:
 Technique used
 --------------
 - Visual Studio Express 2012 for Windows Desktop
+- https://code.google.com/p/moq/ for mocking in the unit tests.
 - http://nancyfx.org/ for hosting the website inside controller.exe
 - http://signalr.net/ for pushing the new game state to the browsers viewing the website.
+- http://www.sqlite.org/ for storing the country and continent structure and logging the game.
+- https://code.google.com/p/dapper-dot-net/ ORM for reading the SQLite data and converting it to POCO's.
+- http://sqlitestudio.one.pl/ for managing the SQLite database.
+- http://system.data.sqlite.org/index.html/doc/trunk/www/index.wiki for using SQLite in c#
 - Named pipes for communication with the bots.
 
 <a name="state"/>

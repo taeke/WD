@@ -2,11 +2,13 @@
 // <copyright file="CardType.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Enums
 {
+    using WDGameEngine.Interfaces;
+
     /// <summary>
     /// A <see cref="IPlayer"/> can win a CardType if he attacks a <see cref="Country"/> and wins. The index is also the number of amries when 
     /// a <see cref="IPlayer"/> exchanges a set of 3 of these cards.

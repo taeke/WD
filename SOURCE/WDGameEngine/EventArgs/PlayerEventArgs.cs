@@ -2,12 +2,13 @@
 // <copyright file="PlayerEventArgs.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.EventArgs
 {
     using System.Drawing;
+    using WDGameEngine.Interfaces;
 
     /// <summary>
     /// Information about the <see cref="IPlayer"/> for which an event gets fired.

@@ -2,7 +2,7 @@
 // <copyright file="EventHelper.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -68,6 +68,11 @@ namespace WDGameEngine.Tests.GameTests
         /// Backing field for PlayerReceivesNewCardCount.
         /// </summary>
         private int playerReceivesNewCardCount = 0;
+
+        /// <summary>
+        /// Backing field for PlayerHasWonCount
+        /// </summary>
+        private int playerHasWonCount = 0;
 
         /// <summary>
         /// Creates a instances of this Helper class and creates the setups.
@@ -171,6 +176,17 @@ namespace WDGameEngine.Tests.GameTests
         }
 
         /// <summary>
+        /// How many times did <see cref="IGame"/> instance call the PlayerHasWon Event.
+        /// </summary>
+        public int PlayerHasWonCount
+        {
+            get
+            {
+                return this.playerHasWonCount;
+            }
+        }
+
+        /// <summary>
         /// Hook up the GotoChooseTurnType event.
         /// </summary>
         public void SetGotoChooseTurnType()
@@ -192,10 +208,12 @@ namespace WDGameEngine.Tests.GameTests
 
             // By checking for 32 we are sure these are not the new armies for continents amount but the initialarmie so we are still in
             // ChooseTurnType
-            if (playerHelper.Player.NumberOfNewArmies == 32)
+            if (playerHelper.Player.NumberOfNewArmies == 36)
             {
-                string countryName = playerHelper.CountryNumberOfArmies.FirstOrDefault(c => c.Key.Name == "4").Key != null ? "4" : "11";
-                this.game.PlaceNewArmies(playerHelper.Player.NumberOfNewArmies, countryName);
+                string countryName = playerHelper.CountryNumberOfArmies.FirstOrDefault(c => c.Key.Name == "1").Key != null ? "1" : "6";
+                this.game.PlaceNewArmies(24, countryName);
+                countryName = playerHelper.CountryNumberOfArmies.FirstOrDefault(c => c.Key.Name == "5").Key != null ? "5" : "2";
+                this.game.PlaceNewArmies(12, countryName);
                 this.game.GoToNextFase();
             }
         }
@@ -280,6 +298,21 @@ namespace WDGameEngine.Tests.GameTests
                 if (this.currentGameFase == gameFase)
                 {
                     this.playerReceivesNewCardCount++;
+                }
+            };
+        }
+
+        /// <summary>
+        /// Keep track of the amount of times the PlayerHasWon Event is called in a specfic <see cref="GameFase"/>.
+        /// </summary>
+        /// <param name="gameFase"> The <see cref="GameFase"/> for which we want to now the Event count. </param>
+        public void SetupCountForPlayerHasWon(GameFase gameFase)
+        {
+            this.game.PlayerHasWon += delegate(object sender, PlayerEventArgs e)
+            {
+                if (this.currentGameFase == gameFase)
+                {
+                    this.playerHasWonCount++;
                 }
             };
         }

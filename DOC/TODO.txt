@@ -1,29 +1,18 @@
-TODO VOOR CHECKIN
-=================
-- Project aanmaken op github.
-- File voor excluden files voor github aanmaken.
-- Inchecken en uploaden files naar github.
-- Tweet sturen over github.
-
 TODO
 ====
-- Fix laatste TODO's in code.
-- Sommige asserts zijn weggevallen na een refactor slag dit nog aanpassen.
-- resource strings uitzoeken.
-- exceptions aanpassen zodat ze meer info geven.
-- Tests voor Player schrijven
-- Implementatie Player schrijven
-- Database voor world maken.
-- Script voor vullen database maken.
-- Uitzoeken automatisch starten script bij build en op juiste plek neerzetten database.
-- Uitzoeken laden van landen met dabber en en implementeren in World en tests voor schrijven.
+- Alles nog een keer nalopen.
+- DB aanpassen aan eenvoudigere test en continents de aantal voor bezit hele continent.
+
+- Uitzoeken automatisch bij build db op juiste plek neerzetten.
 - Commandline test programma project aanmaken.
-- Dependency inkections voor de gameengine dll in orde maken in de commandline project.
-- automatisch starten game met twee players maken.
-- command set voor commandline maken.
+- Dependency injections voor de gameengine dll in orde maken in de commandline project.
+- Repository implementatie schrijven.
+- Automatisch starten game met twee players maken.
+- Command set voor commandline maken.
 - uitschrijven uitspelen van een game met een bekende seed voor random.
 - html voor tonen speelveld maken.
 - nancy selfhost in commandline project toevoegen en speelveld laden.
+- Uitzoeken signalR voor updaten speelveld.
 
 CHECK
 =====

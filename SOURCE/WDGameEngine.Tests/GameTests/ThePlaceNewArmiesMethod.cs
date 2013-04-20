@@ -2,13 +2,11 @@
 // <copyright file="ThePlaceNewArmiesMethod.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
 {
-    //// TODO : Check if the NewArmies property on the IPLayer goes down with the right amount.
-
     using System;
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -59,7 +57,7 @@ namespace WDGameEngine.Tests.GameTests
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void PlaceNewArmiesWithCountryIsNullShouldThrowAnException()
+        public void PlaceNewArmiesWithCountryNameIsNullShouldThrowAnException()
         {
             // Arrange
             this.SettingUpTillGameFase(GameFase.PlaceInitialArmies, TurnType.Attack);
@@ -98,6 +96,7 @@ namespace WDGameEngine.Tests.GameTests
 
             // Act
             this.Game.PlaceNewArmies(1, "bestaatniet"); // Call PlaceNewArmies once
+
             // Assert
             // Assertion is done bij ExpectedException attribute.
         }
@@ -179,13 +178,30 @@ namespace WDGameEngine.Tests.GameTests
         {
             // Arrange
             this.SettingUpTillGameFase(GameFase.PlaceInitialArmies, TurnType.Attack);
+            int oldValue = this.CurrentPlayer.CountryNumberOfArmies.First().Value;
 
             // Act
-            int oldValue = this.CurrentPlayer.CountryNumberOfArmies.First().Value;
             this.Game.PlaceNewArmies(3, this.CurrentPlayer.CountryNumberOfArmies.First().Key.Name); // Call PlaceNewArmies once
 
             // Assert
             Assert.AreEqual(oldValue + 3, this.CurrentPlayer.CountryNumberOfArmies.First().Value);
+        }
+
+        /// <summary>
+        /// Testing if PlaceNewArmies lowers the numberOfNewArmies on the player with the same amount.
+        /// </summary>
+        [TestMethod]
+        public void PlaceNewArmiesShouldLowerTheSameAmountOnNewArmies()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.PlaceInitialArmies, TurnType.Attack);
+            int oldValue = this.EventHelper.CurrentPlayerHelper.Player.NumberOfNewArmies;
+
+            // Act
+            this.Game.PlaceNewArmies(3, this.CurrentPlayer.CountryNumberOfArmies.First().Key.Name); // Call PlaceNewArmies once
+
+            // Assert
+            Assert.AreEqual(oldValue - 3, this.EventHelper.CurrentPlayerHelper.Player.NumberOfNewArmies);
         }
     }
 }

@@ -2,13 +2,11 @@
 // <copyright file="Game.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine
 {
-    //// TODO : Check if the IPlayer instance stil has some countries otherwise skip and decided its end of the game if only one player left.
-
     using System;
     using System.Collections.Generic;
     using System.Drawing;
@@ -43,6 +41,11 @@ namespace WDGameEngine
         /// Is the game started?
         /// </summary>
         private bool isStarted = false;
+
+        /// <summary>
+        /// Is the game ended?
+        /// </summary>
+        private bool isEnded = false;
 
         /// <summary>
         /// Did the currentPlayer receive a <see cref="CardType"/> during this turn.
@@ -82,7 +85,7 @@ namespace WDGameEngine
         /// <summary>
         /// How to configure the Game.
         /// </summary>
-        private IConfig config;
+        private Config config;
 
         /// <summary>
         /// Initializes a Game instance.
@@ -92,31 +95,31 @@ namespace WDGameEngine
         /// <param name="playerFactory"> A factory for generating <see cref="IPlayer"/> instances. </param>
         /// <param name="config"> Configuration for the game. </param>
         /// <param name="random"> A class for generating random or pseudo random numbers. </param>
-        public Game(IWorld world, List<Color> playerColors, Func<Color, IPlayer> playerFactory, IConfig config, Randomize random)
+        public Game(IWorld world, List<Color> playerColors, Func<Color, IPlayer> playerFactory, Config config, Randomize random)
         {
             if (world == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("world");
             }
 
             if (playerColors == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("playerColors");
             }
 
             if (playerFactory == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("playerFactory");
             }
 
             if (config == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("config");
             }
 
             if (random == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("random");
             }
 
             this.world = world;
@@ -124,7 +127,7 @@ namespace WDGameEngine
 
             if (playerColors.Count < config.MinimumNumberPlayers)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.PLAYER_COLORS_COUNT_SMALLER_MIN_PLAYERS);
             }
 
             this.playerColors = playerColors;
@@ -155,17 +158,22 @@ namespace WDGameEngine
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
+        public event EventHandler<PlayerEventArgs> PlayerHasWon;
+
+        /// <summary>
+        /// <inheritDoc/>
+        /// </summary>
         /// <returns> <inheritDoc/> </returns>
         public Color AddPlayer()
         {
             if (this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_ADDPLAYER_IF_GAME_STARTED);
             }
 
             if (this.playerColors.Count == this.players.Count)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_ADD_MORE_PLAYERS_AS_COLORS);
             }
 
             IPlayer newPlayer = this.playerFactory(this.playerColors[this.players.Count]);
@@ -180,7 +188,12 @@ namespace WDGameEngine
         {
             if (this.players.Count < this.config.MinimumNumberPlayers)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_START_WITH_LESS_MIN_PLAYERS);
+            }
+
+            if (this.isStarted)
+            {
+                throw new InvalidOperationException(Strings.GAME_ALREADY_STARTED);
             }
 
             this.isStarted = true;
@@ -198,17 +211,17 @@ namespace WDGameEngine
         {
             if (!this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_CHOOSETURNTYPE_GAME_NOT_STARTED);
             }
 
             if (this.currentGameFase != GameFase.ChooseTurnType)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_CHOOSETURNTYPE_NOT_IN_FASE);
             }
 
             if (!Enum.IsDefined(typeof(TurnType), turnType))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("turnType");
             }
 
             this.currentPlayer.TurnType = turnType;
@@ -222,38 +235,38 @@ namespace WDGameEngine
         {
             if (!this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_EXCHANGECARDS_GAME_NOT_STARTED);
             }
 
             if (this.currentGameFase != GameFase.ExchangeCards)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_EXCHANGECARDS_NOT_IN_FASE);
             }
 
             if (cards == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("cards");
             }
 
             if (cards.Count != 3)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("cards");
             }
 
             int distinct = cards.Distinct().Count();
             if (!(distinct == 1) && !(distinct == cards.Count()))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("cards");
             }
 
             if (distinct == 3 && cards.Intersect(this.currentPlayer.Cards).Count() != 3)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("cards");
             }
 
             if (distinct == 1 && this.currentPlayer.Cards.FindAll(c => c == cards.First()).Count() != 3)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("cards");
             }
 
             this.AddNewArmiesForPlayer(this.currentPlayer, distinct == 1 ? (int)cards.First() : Game.NewArmiesForThreeDifferentCardTypes);
@@ -267,17 +280,17 @@ namespace WDGameEngine
         /// <inheritDoc/>
         /// </summary>
         /// <param name="count"> <inheritDoc/>. </param>
-        /// <param name="country"> <inheritDoc/>. </param>
+        /// <param name="countryName"> <inheritDoc/>. </param>
         public void PlaceNewArmies(int count, string countryName)
         {
             if (!this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_PLACENEWARMIES_GAME_NOT_STARTED);
             }
 
             if (countryName == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("countryName");
             }
 
             Country country;
@@ -285,34 +298,29 @@ namespace WDGameEngine
             {
                 country = this.world.Countries.First(w => w.Name == countryName);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
-                throw e;
+                throw new InvalidOperationException(Strings.NOT_A_VALID_COUNTRY_NAME);
             }
 
             if (this.currentGameFase != GameFase.PlaceNewArmies && this.currentGameFase != GameFase.PlaceInitialArmies)
             {
-                throw new InvalidOperationException();
-            }
-
-            if (country == null)
-            {
-                throw new ArgumentException();
+                throw new InvalidOperationException(Strings.CANT_PLACENEWARMIES_NOT_IN_FASE);
             }
 
             if (count < 1)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MUST_PLACE_AT_LEAST_ONE_ARMIE);
             }
 
             if (count > this.currentPlayer.NumberOfNewArmies)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.CANT_PLACE_MORE_AS_OWNED);
             }
 
             if (this.FindPlayerOwningCountry(country) != this.currentPlayer)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.PLACENEWARMIES_DONT_OWN_COUNTRY);
             }
 
             this.AddNewArmiesForPlayer(this.currentPlayer, -count);
@@ -322,19 +330,19 @@ namespace WDGameEngine
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
-        /// <param name="attackingCountry"> <inheritDoc/>. </param>
-        /// <param name="defendingCountry"> <inheritDoc/>. </param>
+        /// <param name="attackingCountryName"> <inheritDoc/>. </param>
+        /// <param name="defendingCountryName"> <inheritDoc/>. </param>
         /// <param name="count"> <inheritDoc/>. </param>
         public void Attack(string attackingCountryName, string defendingCountryName, int count)
         {
             if (!this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_ATTACK_GAME_NOT_STARTED);
             }
 
             if (attackingCountryName == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("attackingCountryName");
             }
 
             Country attackingCountry;
@@ -342,14 +350,14 @@ namespace WDGameEngine
             {
                 attackingCountry = this.world.Countries.First(w => w.Name == attackingCountryName);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
-                throw e;
+                throw new InvalidOperationException(Strings.NOT_A_VALID_COUNTRY_NAME);
             }
 
             if (defendingCountryName == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("defendingCountryName");
             }
 
             Country defendingCountry;
@@ -357,49 +365,39 @@ namespace WDGameEngine
             {
                 defendingCountry = this.world.Countries.First(w => w.Name == defendingCountryName);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
-                throw e;
+                throw new InvalidOperationException(Strings.NOT_A_VALID_COUNTRY_NAME);
             }
 
             if (this.currentGameFase != GameFase.Attack)
             {
-                throw new InvalidOperationException();
-            }
-
-            if (attackingCountry == null)
-            {
-                throw new ArgumentException();
-            }
-
-            if (defendingCountry == null)
-            {
-                throw new ArgumentException();
+                throw new InvalidOperationException(Strings.CANT_ATTACK_NOT_IN_FASE);
             }
 
             if (count < 1)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MUST_ATTACK_AT_LEAST_ONE_ARMIE);
             }
 
             if (this.currentPlayer.CountryNumberOfArmies.ContainsKey(defendingCountry))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.ATTACK_OWN_COUNTRY);
             }
 
             if (!this.currentPlayer.CountryNumberOfArmies.ContainsKey(attackingCountry))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.ATTACK_DONT_OWN_COUNTRY);
             }
 
             if (!attackingCountry.Neighbours.Contains(defendingCountry))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.ATTACK_ONLY_NEIGHBOUR);
             }
 
             if ((count > 2 ? 3 : count) > this.currentPlayer.CountryNumberOfArmies[attackingCountry] - count)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.ATTACK_WITH_TO_MANY_ARMIES);
             }
 
             this.FillAttackInfo(attackingCountry, defendingCountry, count);
@@ -409,24 +407,25 @@ namespace WDGameEngine
             this.NewCardIfAttackerWinsAndNotReceivedACard(winner);
             this.SetArmiesDefendingCountry(winner, defendingCountry, aditonalArmies);
             this.ChangeCountryNumberArmies(attackingCountry, this.currentPlayer, this.currentPlayer.CountryNumberOfArmies[attackingCountry] - count - aditonalArmies);
+            this.CheckAttackHasWonGame();
         }
 
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
-        /// <param name="from"> <inheritDoc/>. </param>
-        /// <param name="to"> <inheritDoc/>. </param>
+        /// <param name="fromName"> <inheritDoc/>. </param>
+        /// <param name="toName"> <inheritDoc/>. </param>
         /// <param name="count"> <inheritDoc/>. </param>
         public void MoveArmies(string fromName, string toName, int count)
         {
             if (!this.isStarted)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_MOVEARMIES_GAME_NOT_STARTED);
             }
 
             if (fromName == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("fromName");
             }
 
             Country from;
@@ -441,7 +440,7 @@ namespace WDGameEngine
 
             if (toName == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("toName");
             }
 
             Country to;
@@ -456,42 +455,32 @@ namespace WDGameEngine
 
             if (this.currentGameFase != GameFase.MoveArmiesAfterAttack && this.currentGameFase != GameFase.MoveArmiesEndOfTurn)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.CANT_MOVEARMIES_NOT_IN_FASE);
             }
 
             if (count < 1)
             {
-                throw new ArgumentOutOfRangeException();
-            }
-
-            if (from == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            if (to == null)
-            {
-                throw new ArgumentNullException();
+                throw new ArgumentOutOfRangeException(Strings.MUST_MOVE_AT_LEAST_ONE_ARMIE);
             }
 
             if (from == to)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.FROM_AND_TO_CANT_BE_THE_SAME);
             }
 
             if (!this.currentPlayer.CountryNumberOfArmies.ContainsKey(to))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MOVEARMIES_DONT_OWN_COUNTRY);
             }
 
             if (!this.currentPlayer.CountryNumberOfArmies.ContainsKey(from))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MOVEARMIES_DONT_OWN_COUNTRY);
             }
 
             if (this.currentPlayer.CountryNumberOfArmies[from] <= count)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(Strings.CANT_MOVE_ALL_OR_MORE_ARMIES);
             }
 
             if (this.currentGameFase == GameFase.MoveArmiesAfterAttack &&
@@ -500,24 +489,24 @@ namespace WDGameEngine
                  (to != this.lastAttackInfo.AttackingCountry &&
                   to != this.lastAttackInfo.DefendingCountry)))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.CANT_MOVE_FROM_OTHER_COUNTRIES);
             }
 
             if (this.currentGameFase == GameFase.MoveArmiesAfterAttack &&
                 this.lastAttackInfo.DefendingCountry == from &&
                 this.currentPlayer.CountryNumberOfArmies[from] - count < (this.lastAttackInfo.AttackingArmies > 2 ? 3 : this.lastAttackInfo.AttackingArmies))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MUST_LEAVE_ATTACKING_COUNTRIES);
             }
 
             if (this.movedArmiesThisGameFase)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.MOVE_ONLY_ONCE_IN_A_TURN);
             }
 
             if (!from.Neighbours.Contains(to))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Strings.MOVE_ONLY_NEIGHBOUR);
             }
 
             this.movedArmiesThisGameFase = true;
@@ -531,10 +520,15 @@ namespace WDGameEngine
         public void GoToNextFase()
         {
             this.movedArmiesThisGameFase = false;
+            if (this.isEnded)
+            {
+                throw new InvalidOperationException(Strings.CANT_GOTONEXTFASE_GAME_IS_ENDED);
+            }
+
             switch (this.currentGameFase)
             {
                 case GameFase.None:
-                    throw new InvalidOperationException();
+                    throw new InvalidOperationException(Strings.CANT_GOTONEXTFASE_GAME_NOT_STARTED);
                 case GameFase.PlaceInitialArmies:
                     this.PlaceInitialArmiesFace();
                     break;
@@ -598,6 +592,18 @@ namespace WDGameEngine
         }
 
         /// <summary>
+        /// Call the PlayerHasWon event.
+        /// </summary>
+        /// <param name="e"> The <see cref="PlayerEventArgs"/> instance. </param>
+        protected virtual void OnPlayerHasWon(PlayerEventArgs e)
+        {
+            if (this.PlayerHasWon != null)
+            {
+                this.PlayerHasWon(this, e);
+            }
+        }
+
+        /// <summary>
         /// Call the PlayerReceivesNewArmies event.
         /// </summary>
         /// <param name="e"> The <see cref="PlayerReceivesNewArmiesEventArgs"/> instance. </param>
@@ -631,7 +637,7 @@ namespace WDGameEngine
                 this.world.Continents == null ||
                 this.world.Continents.Count == 0)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.NOT_LOADED_WORLD_CORRECT);
             }
 
             this.DivideCountries();
@@ -658,7 +664,7 @@ namespace WDGameEngine
         /// This method will return the player who won the <see cref="Country"/> and the number of armies he got left on it after the attack.
         /// </summary>
         /// <param name="country"> The <see cref="Country"/> defending. </param>
-        /// <param name="localArmies"> The number of armies used in the attack by the attackingCountry. </param>
+        /// <param name="armies"> The number of armies used in the attack by the attackingCountry. </param>
         private KeyValuePair<IPlayer, int> Fight(Country country, int armies)
         {
             int attackerArmies = armies;
@@ -699,7 +705,7 @@ namespace WDGameEngine
         }
 
         /// <summary>
-        /// Change the number of armies on a <see cref="County"/> for a <see cref="IPlayer"/>. It will remove the <see cref="Country"/>
+        /// Change the number of armies on a <see cref="Country"/> for a <see cref="IPlayer"/>. It will remove the <see cref="Country"/>
         /// by this <see cref="IPlayer"/> if the number of armies is 0. And will add the <see cref="Country"/> if count > 0 and
         /// the <see cref="IPlayer"/> doesn't own it yet. It will also call OnPlayerCountryArmiesChanged if something really changed.
         /// </summary>
@@ -732,20 +738,13 @@ namespace WDGameEngine
         }
 
         /// <summary>
-        /// Change the current <see cref="IPlayer"/>. It will reset all state for the turn. It will also call OnPlayerGetsTurn.
+        /// Change the current <see cref="IPlayer"/> if there is another player left. It will reset all state for the turn. It will also call OnPlayerGetsTurn 
+        /// or OnPlayerHasWon.
         /// </summary>
         private void ChangeCurrentPlayer()
         {
-            if (this.currentPlayer == null)
-            {
-                this.currentPlayer = this.players[0];
-            }
-            else
-            {
-                int index = this.currentPlayer == this.players.Last() ? 0 : this.players.IndexOf(this.currentPlayer) + 1;
-                this.currentPlayer = this.players[index];
-            }
-
+            List<IPlayer> playersToChooseFrom = this.players.Where(p => p.CountryNumberOfArmies.Count > 0).ToList();
+            this.currentPlayer = this.GetNextPlayer(playersToChooseFrom);
             this.currentPlayerGotCardThisTurn = false;
             this.currentPlayer.TurnType = TurnType.NotChosen;
             if (this.currentGameFase == GameFase.ChooseTurnType)
@@ -754,6 +753,23 @@ namespace WDGameEngine
             }
 
             this.OnPlayerGetsTurn(new PlayerEventArgs(this.currentPlayer.Color));
+        }
+
+        /// <summary>
+        /// Picks the next <see cref="IPlayer"/> from a list of <see cref="IPlayer"/> to choose from.
+        /// </summary>
+        /// <param name="playersToChooseFrom"> List of <see cref="IPlayer"/> to choose from. </param>
+        private IPlayer GetNextPlayer(List<IPlayer> playersToChooseFrom)
+        {
+            if (this.currentPlayer == null)
+            {
+                return this.players[0];
+            }
+            else
+            {
+                int index = this.currentPlayer == playersToChooseFrom.Last() ? 0 : playersToChooseFrom.IndexOf(this.currentPlayer) + 1;
+                return playersToChooseFrom[index];
+            }
         }
 
         /// <summary>
@@ -823,7 +839,7 @@ namespace WDGameEngine
         {
             if (this.currentPlayer.NumberOfNewArmies > 0)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.PLACE_ALL_NEW_ARMIES);
             }
 
             if (this.currentPlayer == this.players.Last())
@@ -842,7 +858,7 @@ namespace WDGameEngine
         {
             if (this.currentPlayer.TurnType == TurnType.NotChosen)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.MUST_CHOOSETURNTYPE);
             }
 
             this.currentGameFase = GameFase.ExchangeCards;
@@ -859,7 +875,7 @@ namespace WDGameEngine
         {
             if (this.currentPlayer.Cards.Count() == this.config.MaximumCards)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.HOLD_TO_MANY_CARDS);
             }
 
             this.currentGameFase = GameFase.PlaceNewArmies;
@@ -873,13 +889,13 @@ namespace WDGameEngine
         {
             if (this.currentPlayer.NumberOfNewArmies != 0)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException(Strings.PLACE_ALL_NEW_ARMIES);
             }
 
             switch (this.currentPlayer.TurnType)
             {
                 case TurnType.NotChosen:
-                    throw new InvalidOperationException();
+                    throw new InvalidOperationException(Strings.WRONG_TURNTYPE);
                 case TurnType.Attack:
                     this.currentGameFase = GameFase.Attack;
                     break;
@@ -888,7 +904,7 @@ namespace WDGameEngine
                     this.ChangeCurrentPlayer();
                     break;
                 default:
-                    throw new InvalidOperationException();
+                    throw new InvalidOperationException(Strings.WRONG_TURNTYPE);
             }
         }
 
@@ -943,12 +959,15 @@ namespace WDGameEngine
         }
 
         /// <summary>
-        /// If the attacking <see cref="IPlayer"/> wins call change CountryNumberArmies to 0 armies for the defending <see cref="IPlayer"/>
+        /// If the attacking <see cref="IPlayer"/> wins call ChangeCountryNumberArmies to 0 armies for the defending <see cref="IPlayer"/>
         /// and call ChangeCountryNumberArmies for the attacking <see cref="IPlayer"/> on the defending <see cref="Country"/> with the
         /// new amount of armies. Else only for the defending player with the new amount of armies.
         /// </summary>
         /// <param name="winner"> The <see cref="IPlayer"/> who won the fight and the amount of armies left after the fight. </param>
         /// <param name="defendingCountry"> The <see cref="Country"/> which was attacked. </param>
+        /// <param name="aditionalArmies"> The additional armies which will be moved to the new Country if the attacker had won. A winning
+        /// <see cref="IPlayer"/> must move at least 3 armies to the new <see cref="Country"/> if he attacks with more then or with precise three
+        /// armies or else two or only one if he attacks with two armies or one armie. </param>
         private void SetArmiesDefendingCountry(KeyValuePair<IPlayer, int> winner, Country defendingCountry, int aditionalArmies)
         {
             IPlayer defendingPlayer = this.FindPlayerOwningCountry(defendingCountry);
@@ -985,6 +1004,19 @@ namespace WDGameEngine
             this.lastAttackInfo.AttackingCountry = attackingCountry;
             this.lastAttackInfo.DefendingCountry = defendingCountry;
             this.lastAttackInfo.AttackingArmies = count;
+        }
+
+        /// <summary>
+        /// Check if there is only 1 <see cref="IPlayer"/> left with <see cref="Country"/> if this is the case he has won
+        /// and this method will call the PlayerHasWon event.
+        /// </summary>
+        private void CheckAttackHasWonGame()
+        {
+            this.isEnded = this.players.Where(p => p.CountryNumberOfArmies.Count > 0).Count() == 1;
+            if (this.isEnded)
+            {
+                this.OnPlayerHasWon(new PlayerEventArgs(this.currentPlayer.Color));
+            }
         }
     }
 }

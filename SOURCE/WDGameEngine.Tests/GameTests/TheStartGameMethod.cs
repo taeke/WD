@@ -2,7 +2,7 @@
 // <copyright file="TheStartGameMethod.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -183,6 +183,7 @@ namespace WDGameEngine.Tests.GameTests
         /// testing if Calling  StartGame twice throws an InvalidOperationException.
         /// </summary>
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void StartGameASecondTimeShouldThrowAnException()
         {
             // Arange

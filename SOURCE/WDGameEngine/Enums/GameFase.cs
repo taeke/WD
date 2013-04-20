@@ -2,23 +2,26 @@
 // <copyright file="GameFase.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Enums
 {
+    using WDGameEngine.Interfaces;
+
     /// <summary>
     /// Each turn a <see cref="IPlayer"/> goes through a couple of fases. This enum defines these fases.
     /// </summary>
     public enum GameFase
     {
         /// <summary>
-        /// Before a Call to StartGame there is no real GameFase.
+        /// Before a call to StartGame there is no real GameFase.
         /// </summary>
         None,
 
         /// <summary>
-        /// When the <see cref="IGame"/> is started the first turn the <see cref="IPlayer"/> must place armies on all of his <see cref="Country"/>.
+        /// When the <see cref="IGame"/> is started the first turn the <see cref="IPlayer"/> must place the new armies he receives at the start of the game 
+        /// on one or more of his <see cref="Country"/>. There is allready 1 amrie on each <see cref="Country"/> a player receives at the start of the game.
         /// </summary>
         PlaceInitialArmies,
 
@@ -53,6 +56,7 @@ namespace WDGameEngine.Enums
 
         /// <summary>
         /// The <see cref="IPlayer"/> has indicated he wants to end his attacks and still may move armies from one of his <see cref="Country"/> to another.
+        /// He can only move armies once during eacht turn in this fase.
         /// </summary>
         MoveArmiesEndOfTurn
     }

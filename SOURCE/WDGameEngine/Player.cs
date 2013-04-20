@@ -2,7 +2,7 @@
 // <copyright file="Player.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine
@@ -24,11 +24,6 @@ namespace WDGameEngine
         private Dictionary<Country, int> countryNumberOfArmies = new Dictionary<Country, int>();
 
         /// <summary>
-        /// Backing field for NumberOfNewArmies.
-        /// </summary>
-        private int numberOfNewArmies;
-
-        /// <summary>
         /// Backing field for Cards.
         /// </summary>
         private List<CardType> cards = new List<CardType>();
@@ -47,6 +42,7 @@ namespace WDGameEngine
         /// Instantiates a Player class.
         /// </summary>
         /// <param name="color"> The color for this Player.</param>
+        /// <param name="dice"> The <see cref="Randomize"/> instance used to roll the dice. </param>
         public Player(Color color, Randomize dice)
         {
             this.color = color;
@@ -67,18 +63,7 @@ namespace WDGameEngine
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
-        public int NumberOfNewArmies
-        {
-            get
-            {
-                return this.numberOfNewArmies;
-            }
-
-            set
-            {
-                this.numberOfNewArmies = value;
-            }
-        }
+        public int NumberOfNewArmies { get; set; }
 
         /// <summary>
         /// <inheritDoc/>
@@ -124,7 +109,14 @@ namespace WDGameEngine
         /// <param name="country"><inheritDoc/></param>
         public List<int> RollTheDices(Country country)
         {
-            throw new System.NotImplementedException();
+            List<int> result = new List<int>();
+            result.Add(this.dice.Next(6));
+            if (this.countryNumberOfArmies[country] > 1)
+            {
+                result.Add(this.dice.Next(6));
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -133,7 +125,19 @@ namespace WDGameEngine
         /// <param name="numberOfArmies"><inheritDoc/></param>
         public List<int> RollTheDices(int numberOfArmies)
         {
-            throw new System.NotImplementedException();
+            List<int> result = new List<int>();
+            result.Add(this.dice.Next(6));
+            if (numberOfArmies > 1)
+            {
+                result.Add(this.dice.Next(6));
+            }
+
+            if (numberOfArmies > 2)
+            {
+                result.Add(this.dice.Next(6));
+            }
+
+            return result;
         }
     }
 }

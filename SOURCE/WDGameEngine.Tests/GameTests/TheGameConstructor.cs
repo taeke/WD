@@ -2,7 +2,7 @@
 // <copyright file="TheGameConstructor.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -34,7 +34,7 @@ namespace WDGameEngine.Tests.GameTests
                 null,
                 new List<Color>() { Color.Red, Color.Blue },
                 c => { return new PlayerHelper(c).Player; },
-                new Mock<IConfig>(MockBehavior.Strict).Object,
+                new Config(),
                 new Mock<Randomize>(MockBehavior.Strict).Object);
 
             // Assert
@@ -56,7 +56,7 @@ namespace WDGameEngine.Tests.GameTests
                 worldMock.Object,
                 null,
                 c => { return new PlayerHelper(c).Player; },
-                new Mock<IConfig>(MockBehavior.Strict).Object,
+                new Config(),
                 new Mock<Randomize>(MockBehavior.Strict).Object);
 
             // Assert
@@ -78,7 +78,7 @@ namespace WDGameEngine.Tests.GameTests
                 worldMock.Object, 
                 new List<Color>() { Color.Red, Color.Blue }, 
                 null,
-                new Mock<IConfig>(MockBehavior.Strict).Object,
+                new Config(),
                 new Mock<Randomize>(MockBehavior.Strict).Object);
 
             // Assert
@@ -122,7 +122,7 @@ namespace WDGameEngine.Tests.GameTests
                 worldMock.Object,
                 new List<Color>() { Color.Red, Color.Blue },
                 c => { return new PlayerHelper(c).Player; },
-                new Mock<IConfig>(MockBehavior.Strict).Object,
+                new Config(),
                 null);
 
             // Assert
@@ -137,13 +137,13 @@ namespace WDGameEngine.Tests.GameTests
         public void ShouldThrowExceptionWhenNumberOfColorsIsLessThenMinimumPlayers()
         {
             Mock<IWorld> worldMock = new Mock<IWorld>(MockBehavior.Strict);
-            Mock<IConfig> configMock = new Mock<IConfig>();
-            configMock.Setup(c => c.MinimumNumberPlayers).Returns(2);
+            Config config = new Config();
+            config.MinimumNumberPlayers = 2;
             Game game = new Game(
                 worldMock.Object,
                 new List<Color>() { Color.Red },
                 c => { return new PlayerHelper(c).Player; },
-               configMock.Object,
+               config,
                 new Mock<Randomize>(MockBehavior.Strict).Object);
         }
     }

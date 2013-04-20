@@ -2,7 +2,7 @@
 // <copyright file="WorldHelper.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -16,14 +16,6 @@ namespace WDGameEngine.Tests.GameTests
     //// |  |_____________|_____________|  |_____________|_____________|
     //// |  | Country  4  | Country 5   |  | Country 6   | Country 7   |
     //// |  | Red player  | Red player  |  | Red player  | Red player  |
-    //// |__|_____________|_____________|__|_____________|_____________|
-    //// | Continent 2                  | Continent 3                  |
-    //// |  ____________________________|  ____________________________|
-    //// |  | Country 8   | Country 9   |  | Country 10  | Country 11  |
-    //// |  | Blue player | Blue player |  | Blue player | Blue player |
-    //// |  |_____________|_____________|  |_____________|_____________|
-    //// |  | Country 12  | Country 13  |  | Country 14  | Country 15  |
-    //// |  | Blue player | Blue player |  | Blue player | Blue player |
     //// |__|_____________|_____________|__|_____________|_____________|
     
     using System.Collections.Generic;
@@ -92,12 +84,12 @@ namespace WDGameEngine.Tests.GameTests
         private void CreateCountriesForMock()
         {
             this.countries = new List<Country>();
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 8; i++)
             {
                 this.countries.Add(new Country() { Name = i.ToString() });
             }
 
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 8; i++)
             {
                 // left of current. 
                 if ((i + 1) % 4 != 1)
@@ -112,13 +104,13 @@ namespace WDGameEngine.Tests.GameTests
                 }
 
                 // top of current
-                if ((i + 1) > 4)
+                if (i > 4)
                 {
                     this.countries[i].Neighbours.Add(this.countries[i - 4]);
                 }
 
                 // bottom of current
-                if ((i + 1) < 12)
+                if (i < 4)
                 {
                     this.countries[i].Neighbours.Add(this.countries[i + 4]);
                 }
@@ -130,13 +122,14 @@ namespace WDGameEngine.Tests.GameTests
         /// </summary>
         private void CreateContinentsForMock()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 this.continents.Add(new Continent() { NewArmiesForOwning = (i + 1) * 2 });
-                this.continents[i].Countries.Add(this.countries[(i < 2 ? 0 : 4) + (i * 2)]);
-                this.continents[i].Countries.Add(this.countries[(i < 2 ? 0 : 4) + (i * 2) + 1]);
-                this.continents[i].Countries.Add(this.countries[(i < 2 ? 0 : 4) + (i * 2) + 4]);
-                this.continents[i].Countries.Add(this.countries[(i < 2 ? 0 : 4) + (i * 2) + 5]);
+                this.continents[i].Countries = new List<Country>();
+                this.continents[i].Countries.Add(this.countries[(i * 2)]);
+                this.continents[i].Countries.Add(this.countries[(i * 2) + 1]);
+                this.continents[i].Countries.Add(this.countries[(i * 2) + 4]);
+                this.continents[i].Countries.Add(this.countries[(i * 2) + 5]);
             }
         }
     }

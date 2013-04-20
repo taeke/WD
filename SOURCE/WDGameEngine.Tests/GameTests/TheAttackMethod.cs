@@ -2,13 +2,11 @@
 // <copyright file="TheAttackMethod.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
 {
-    //// TODO : checks for country string empty and wrong. See ThePlaceNewArmiesMethod
-
     using System;
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -50,14 +48,14 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.PlaceNewArmies, TurnType.Attack);
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
         }
 
         /// <summary>
-        /// Calling Attack with the attacking <see cref="Country"/> is Null should throw an ArgumentNullException.
+        /// Calling Attack with the attackingCountryName is Null should throw an ArgumentNullException.
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -74,6 +72,38 @@ namespace WDGameEngine.Tests.GameTests
         }
 
         /// <summary>
+        /// Testing of Calling Attack with attackingCountryName is string.Empty throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithAttackingCountryIsEmptyShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.Attack(string.Empty, "8", 1); // Call Attack once
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling Attack with attackingCountryName is not excisting <see cref="Country"/> name throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithAttackingCountryNotExcistingShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.Attack("bestaatniet", "8", 1); // Call Attack once
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
         /// Calling Attack with the deffending <see cref="Country"/> is Null should throw an ArgumentNullException.
         /// </summary>
         [TestMethod]
@@ -84,8 +114,40 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
 
             // Act
-            this.Game.Attack("4", null, 1);
+            this.Game.Attack("1", null, 1);
 
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling Attack with hDeffendingCountry is string.Empty throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithDeffendingCountryIsEmptyShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.Attack("1", string.Empty, 1); // Call Attack once
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling Attack with DeffendingCountry is not excisting <see cref="Country"/> name throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithDeffendingCountryNotExcistingShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.Attack("1", "bestaatniet", 1); // Call Attack once
             // Assert
             // Assertion is done bij ExpectedException attribute.
         }
@@ -102,7 +164,7 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
             Assert.AreEqual(1, this.EventHelper.PlayerReceivesNewCardCount);
@@ -118,10 +180,10 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
             this.EventHelper.SetupCountForPlayerReceivesNewCard(GameFase.Attack);
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 10);
 
             // Act
-            this.Game.Attack("5", "9", 1);
+            this.Game.Attack("2", "6", 1);
 
             // Assert
             Assert.AreEqual(1, this.EventHelper.PlayerReceivesNewCardCount);
@@ -139,13 +201,13 @@ namespace WDGameEngine.Tests.GameTests
             bool callFound = false;
             this.Game.PlayerCountryArmiesChanged += delegate(object sender, PlayerCountryArmiesChangedEventArgs e)
             {
-                Country deffendingCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "8");
+                Country deffendingCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "2");
                 Country country = this.WorldHelper.World.Countries.Find(w => w.Name == e.Country);
                 callFound = callFound || (e.PlayerColor == this.CurrentPlayer.Color && country == deffendingCountry);
             };
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
             Assert.IsTrue(callFound);
@@ -164,11 +226,11 @@ namespace WDGameEngine.Tests.GameTests
             this.Game.PlayerCountryArmiesChanged += delegate(object sender, PlayerCountryArmiesChangedEventArgs e)
             {
                 Country country = this.WorldHelper.World.Countries.Find(w => w.Name == e.Country);
-                callFound = callFound || (e.PlayerColor == this.CurrentPlayer.Color && country.Name == "4");
+                callFound = callFound || (e.PlayerColor == this.CurrentPlayer.Color && country.Name == "1");
             };
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
             Assert.IsTrue(callFound);
@@ -187,7 +249,7 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("4", "13", 1);
+            this.Game.Attack("1", "6", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -205,7 +267,7 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("11", "7", 1);
+            this.Game.Attack("2", "1", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -223,7 +285,7 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("4", "5", 1);
+            this.Game.Attack("1", "5", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -239,10 +301,10 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
-            Country deffendingCountry = this.WorldHelper.World.Countries.Find(w => w.Name == "8");
+            Country deffendingCountry = this.WorldHelper.World.Countries.Find(w => w.Name == "2");
             this.EventHelper.CurrentPlayerHelper.PlayerMock.Verify(p => p.RollTheDices(1));
         }
 
@@ -256,10 +318,10 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("4", "8", 1);
+            this.Game.Attack("1", "2", 1);
 
             // Assert
-            Country deffendingCountry = this.WorldHelper.World.Countries.Find(w => w.Name == "8");
+            Country deffendingCountry = this.WorldHelper.World.Countries.Find(w => w.Name == "2");
             this.EventHelper.OtherPlayerHelper.PlayerMock.Verify(p => p.RollTheDices(deffendingCountry));
         }
 
@@ -274,8 +336,8 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            Country attackingCountry = this.CurrentPlayer.CountryNumberOfArmies.First(c => c.Key.Name == "5").Key;
-            this.Game.Attack("5", "8", this.CurrentPlayer.CountryNumberOfArmies[attackingCountry] + 1);
+            Country attackingCountry = this.CurrentPlayer.CountryNumberOfArmies.First(c => c.Key.Name == "1").Key;
+            this.Game.Attack("1", "2", this.CurrentPlayer.CountryNumberOfArmies[attackingCountry] + 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -288,14 +350,31 @@ namespace WDGameEngine.Tests.GameTests
         [ExpectedException(typeof(ArgumentException))]
         public void AttackShouldThrowExceptionIfCalledWithZeroArmies()
         {
+            // Arrange
             this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
             this.EventHelper.SettingUpAttackingAndDefendingDices(true);
 
             // Act
-            this.Game.Attack("5", "8", 0);
+            this.Game.Attack("1", "2", 0);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing if calling attack ends the game also calls the PlayerHasWon event.
+        /// </summary>
+        [TestMethod]
+        public void AttackShouldCallPlayerHasWonIfAttackIsEndOfGame()
+        {
+            // Arrange
+            this.EventHelper.SetupCountForPlayerHasWon(GameFase.Attack);
+
+            // Act
+            this.SettingUpTillEndOfGame();
+
+            // Assert
+            Assert.AreEqual(1, this.EventHelper.PlayerHasWonCount);
         }
     }
 }

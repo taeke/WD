@@ -2,11 +2,13 @@
 // <copyright file="TurnType.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Enums
 {
+    using WDGameEngine.Interfaces;
+
     /// <summary>
     /// A <see cref="IPlayer"/> can choose to atack or get an army for every third <see cref="Country"/> he owns.
     /// </summary>

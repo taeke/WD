@@ -2,13 +2,11 @@
 // <copyright file="TheMoveArmiesMethod.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
 {
-    //// TODO : checks for country string empty and wrong. See ThePlaceNewArmiesMethod
-
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using WDGameEngine.Enums;
@@ -47,7 +45,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("4", "8", 1);
+            this.Game.MoveArmies("1", "2", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -64,8 +62,40 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies(null, "8", 1);
+            this.Game.MoveArmies(null, "2", 1);
 
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling MoveArmies with CountryFrom is string.Empty throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MoveArmiesWithCountryFromIsEmptyShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
+
+            // Act
+            this.Game.MoveArmies(string.Empty, "2", 1); // Call MoveArmies once
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling MoveArmies with CountryFrom is not excisting <see cref="Country"/> name throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void MoveArmiesWithCountryFromNotExcistingShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
+
+            // Act
+            this.Game.MoveArmies("bestaatniet", "2", 1); // Call MoveArmies once
             // Assert
             // Assertion is done bij ExpectedException attribute.
         }
@@ -81,8 +111,40 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("4", null, 1);
+            this.Game.MoveArmies("1", null, 1);
 
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling MoveArmies with CountryTo is string.Empty throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithCountryToIsEmptyShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.MoveArmies("1", string.Empty, 1); // Call MoveArmies once
+            // Assert
+            // Assertion is done bij ExpectedException attribute.
+        }
+
+        /// <summary>
+        /// Testing of Calling MoveArmies with CountryTo is not excisting <see cref="Country"/> name throws an InvalidOperationException.
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void AttackWithCountryToNotExcistingShouldThrowAnException()
+        {
+            // Arrange
+            this.SettingUpTillGameFase(GameFase.Attack, TurnType.Attack);
+
+            // Act
+            this.Game.MoveArmies("1", "bestaatniet", 1); // Call MoveArmies once
             // Assert
             // Assertion is done bij ExpectedException attribute.
         }
@@ -98,7 +160,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("5", "6", 1);
+            this.Game.MoveArmies("5", "1", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -114,8 +176,8 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesAfterAttack, TurnType.Attack);
 
             // Act
-            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "8");
-            this.Game.MoveArmies("8", "4", this.CurrentPlayer.CountryNumberOfArmies[fromCountry] - 1);
+            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "2");
+            this.Game.MoveArmies("2", "1", this.CurrentPlayer.CountryNumberOfArmies[fromCountry] - 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -133,7 +195,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("4", "2", 1);
+            this.Game.MoveArmies("1", "4", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -150,7 +212,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("9", "5", 1);
+            this.Game.MoveArmies("6", "1", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -167,7 +229,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("5", "9", 1);
+            this.Game.MoveArmies("5", "6", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -181,10 +243,10 @@ namespace WDGameEngine.Tests.GameTests
         public void MoveArmiesASecondTimeInTheSameFaseShouldThrowException()
         {
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
-            this.Game.MoveArmies("4", "8", 1);
+            this.Game.MoveArmies("1", "2", 1);
 
             // Act
-            this.Game.MoveArmies("4", "8", 1);
+            this.Game.MoveArmies("1", "2", 1);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -200,8 +262,8 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
 
             // Act
-            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "4");
-            this.Game.MoveArmies("4", "8", this.CurrentPlayer.CountryNumberOfArmies[fromCountry]);
+            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "1");
+            this.Game.MoveArmies("1", "2", this.CurrentPlayer.CountryNumberOfArmies[fromCountry]);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -217,7 +279,7 @@ namespace WDGameEngine.Tests.GameTests
             this.SettingUpTillGameFase(GameFase.MoveArmiesEndOfTurn, TurnType.Attack);
 
             // Act
-            this.Game.MoveArmies("4", "8", 0);
+            this.Game.MoveArmies("1", "2", 0);
 
             // Assert
             // Assertion is done bij ExpectedException attribute.
@@ -233,8 +295,8 @@ namespace WDGameEngine.Tests.GameTests
             this.EventHelper.SetupCountForPlayerCountryArmiesChanged(GameFase.MoveArmiesEndOfTurn);
 
             // Act
-            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "4");
-            this.Game.MoveArmies("4", "8", this.CurrentPlayer.CountryNumberOfArmies[fromCountry] - 1);
+            Country fromCountry = this.WorldHelper.World.Countries.Find(c => c.Name == "1");
+            this.Game.MoveArmies("1", "2", this.CurrentPlayer.CountryNumberOfArmies[fromCountry] - 1);
 
             // Assert
             Assert.AreEqual(2, EventHelper.PlayerCountryArmiesChangedCount);

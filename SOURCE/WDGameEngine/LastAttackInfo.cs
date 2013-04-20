@@ -2,18 +2,20 @@
 // <copyright file="LastAttackInfo.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine
 {
+    using WDGameEngine.Interfaces;
+
     /// <summary>
     /// Information abbout the last attack.
     /// </summary>
     public class LastAttackInfo
     {
         /// <summary>
-        /// Was the attacking (current) <see cref="Iplayer"/> the winner.
+        /// Was the attacking (current) <see cref="IPlayer"/> the winner.
         /// </summary>
         public bool AttackerIsWinner { get; set; }
 

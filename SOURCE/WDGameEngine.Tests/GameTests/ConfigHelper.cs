@@ -2,7 +2,7 @@
 // <copyright file="ConfigHelper.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine.Tests.GameTests
@@ -20,7 +20,7 @@ namespace WDGameEngine.Tests.GameTests
         /// <summary>
         /// The mock for <see cref="IConfig"/>.
         /// </summary>
-        private Mock<IConfig> configMock = new Mock<IConfig>(MockBehavior.Strict);
+        private Config config = new Config();
 
         /// <summary>
         /// Creates an instance of the Helper class and creates the setup for the mock.
@@ -29,19 +29,19 @@ namespace WDGameEngine.Tests.GameTests
         {
             Dictionary<int, int> numberOfPlayersIntialArmies = new Dictionary<int, int>();
             numberOfPlayersIntialArmies.Add(2, 40);
-            this.configMock.Setup(c => c.MinimumNumberPlayers).Returns(2);
-            this.configMock.Setup(c => c.NumberOfPlayersIntialArmies).Returns(numberOfPlayersIntialArmies);
-            this.configMock.Setup(c => c.MaximumCards).Returns(5);
+            this.config.MinimumNumberPlayers = 2;
+            this.config.NumberOfPlayersIntialArmies = numberOfPlayersIntialArmies;
+            this.config.MaximumCards = 5;
         }
 
         /// <summary>
         /// The mocked <see cref="IWorld"/> object.
         /// </summary>
-        public IConfig Config
+        public Config Config
         {
             get
             {
-                return this.configMock.Object;
+                return this.config;
             }
         }
     }

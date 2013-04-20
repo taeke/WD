@@ -6,7 +6,7 @@
     /// <summary>
     /// <inheritDoc/>
     /// </summary>
-    public class Config : IConfig
+    public class Config
     {
         /// <summary>
         /// <inheritDoc/>

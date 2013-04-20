@@ -2,12 +2,13 @@
 // <copyright file="World.cs">
 // Taeke van der Veen april 2013
 // </copyright>
-// Visual Studie Express 2012 for Windows Desktop
+// Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace WDGameEngine
 {
     using System.Collections.Generic;
+    using System.Linq;
     using WDGameEngine.Interfaces;
 
     /// <summary>
@@ -16,43 +17,44 @@ namespace WDGameEngine
     public class World : IWorld
     {
         /// <summary>
-        /// Backing field for Continents.
+        /// An IWDRepository instance.
         /// </summary>
-        private List<Continent> continents = new List<Continent>();
+        private IWDRepository wdRepository;
 
         /// <summary>
-        /// Backing field for Countries.
+        /// Initializes a World instance.
         /// </summary>
-        private List<Country> countries = new List<Country>();
-
-        /// <summary>
-        /// <inheritDoc/>
-        /// </summary>
-        public List<Continent> Continents
+        /// <param name="wdRepository">An IWDRepository instance. </param>
+        public World(IWDRepository wdRepository)
         {
-            get
-            {
-                return this.continents;
-            }
+            this.wdRepository = wdRepository;
         }
 
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
-        public List<Country> Countries
-        {
-            get 
-            {
-                return this.countries; 
-            }
-        }
+        public List<Continent> Continents { get; set; }
+
+        /// <summary>
+        /// <inheritDoc/>
+        /// </summary>
+        public List<Country> Countries { get; set; }
 
         /// <summary>
         /// <inheritDoc/>
         /// </summary>
         public void LoadContinentsAndCountries()
         {
-            throw new System.NotImplementedException();
+            this.Continents = this.wdRepository.GetContinents();
+            this.Countries = this.Continents.SelectMany(c => c.Countries).ToList();
+            List<Neighbours> neighbours = this.wdRepository.GetNeighbours();
+            foreach (Neighbours n in neighbours)
+            {
+                Country country1 = this.Countries.Find(c => c.Name == n.Country1);
+                Country country2 = this.Countries.Find(c => c.Name == n.Country2);
+                country1.Neighbours.Add(country2);
+                country2.Neighbours.Add(country1);
+            }
         }
     }
 }

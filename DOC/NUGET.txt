@@ -1,0 +1,3 @@
+Install-Package System.Data.SQLite
+Install-Package Dapper
+Install-Package Moq
