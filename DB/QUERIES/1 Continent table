@@ -1,0 +1,12 @@
+-- Table: Continent
+CREATE TABLE Continent ( 
+    Id                 INTEGER        PRIMARY KEY AUTOINCREMENT,
+    Name               VARCHAR( 50 ),
+    NewArmiesForOwning INTEGER 
+);
+
+
+INSERT INTO [Continent] ([Id], [Name], [NewArmiesForOwning]) VALUES (1, 'Continent 0', 2);
+INSERT INTO [Continent] ([Id], [Name], [NewArmiesForOwning]) VALUES (2, 'Continent 1', 4);
+
+
