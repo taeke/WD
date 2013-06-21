@@ -1,0 +1,5 @@
+- 1 SignalR server
+- Javascript client die commandos ontvangt voor updaten tekening hier mag er maar 1 van zijn.
+- dot net client met game engine dll die commando's naar bots stuurt en naar javascript client hier mag er maar 1 van zijn.
+- dot net client voor bots hier mogen er meerdere van zijn en sturen en ontvangen commando's.
+- client met game engine is een dll voor testen echter eerst een commandline programma.

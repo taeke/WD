@@ -30,3 +30,16 @@ http://stackoverflow.com/questions/13028069/unable-to-load-dll-sqlite-interop-dl
 
 app.config in unit tests
 http://www.nileshgule.com/2010/09/unit-test-application-configuration.html
+
+signalr beschrijft een bericht sturen vanaf een event getrigger op de server
+https://github.com/SignalR/SignalR/wiki/Hubs
+
+Javascript world map tekenen
+http://joncom.be/code/excanvas-world-map/
+https://github.com/gardaud/worldmap-canvas
+
+Nancy selfhosting
+https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy
+
+Serving static content (laatste antwoord is correct).
+http://stackoverflow.com/questions/13270163/how-to-serve-static-content-in-nancy

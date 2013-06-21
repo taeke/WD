@@ -1,36 +1,26 @@
 TODO
 ====
-- Alles nog een keer nalopen.
-- DB aanpassen aan eenvoudigere test en continents de aantal voor bezit hele continent.
+- Tekening voor Cirkel met legers per land toevoegen.
 
-- Uitzoeken automatisch bij build db op juiste plek neerzetten.
-- Commandline test programma project aanmaken.
+IDEEEN
+======
+- oData uit database genereren. 
 - Dependency injections voor de gameengine dll in orde maken in de commandline project.
+- Uitzoeken automatisch bij build db op juiste plek neerzetten.
 - Repository implementatie schrijven.
-- Automatisch starten game met twee players maken.
 - Command set voor commandline maken.
-- uitschrijven uitspelen van een game met een bekende seed voor random.
-- html voor tonen speelveld maken.
-- nancy selfhost in commandline project toevoegen en speelveld laden.
-- Uitzoeken signalR voor updaten speelveld.
+- Exception handling uit de entrerprice library.
+- Loggen toevoegen uit enterprice library.
+- Save seed voor random om de replay te kunnen doen.
+- Dependency injection uit de enterprice library.
+- Joker card toevoegen.
+- In de commandline app die met de bots praat worden alle events verzameld en krijgt de bot deze als het zijn turn is.
 
 CHECK
 =====
 
 VRAGEN
 ======
-
-IDEEEN
-======
-- Exception handling uit de entrerprice library.
-- Loggen toevoegen uit enterprice library.
-- Save seed voor random om de replay te kunnen doen.
-- Dependency injection uit de enterprice library.
-- Joker card toevoegen.
-- Nancy voor server pagina waarop het spelverloop is te volgen.
-- SignalR voor de communicatie met de pagina van het spelverloop.
-- Nancy en signalR selfhosting.
-- In de commandline app die met de bots praat worden alle events verzameld en krijgt de bot deze als het zijn turn is.
 
 BESCHRIJVING
 ============
@@ -39,3 +29,11 @@ BESCHRIJVING
 
 DONE
 ====
+- NancyFX hosten html en js uitzoeken.
+- Voorbeeld SignalR maken met javascript client.
+- Data voor de landen in een apparte file.
+- oMap gebruiken voor gegevens zoom.
+- Structuur clients en server(s) uitschrijven.
+- Derde test opzetten en nu proberen daadwerkelijk landen van kleur te veranderen.
+- truc met undefined proberen in te bouwen zodat we geen "Alaska" in de code hoeven te hebben staan.
+- Extra laag uit oMap halen want elk land is maar 1 gesloten lijn.
