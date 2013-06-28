@@ -2,8 +2,9 @@ Install-Package System.Data.SQLite.x86
 Install-Package Dapper
 Install-Package Moq
 Install-Package Microsoft.Owin.Hosting -pre
-Install-Package Microsoft.Owin.Host.HttpListener -pre
+Install-Package Microsoft.Owin.Host.HttpListener -Pre
 Install-Package Microsoft.AspNet.SignalR.Owin
-Install-Package Nancy.Owin -Version 0.16.1
+Install-Package Nancy.Owin -Version
 Install-Package Microsoft.AspNet.SignalR.Client
+Install-Package Nancy.Testing
 

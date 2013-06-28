@@ -1,13 +1,11 @@
 TODO
 ====
-- Tekening voor Cirkel met legers per land toevoegen.
+- Commentaar er uitslopen waar het overbodig is.
 
 IDEEEN
 ======
-- oData uit database genereren. 
-- Dependency injections voor de gameengine dll in orde maken in de commandline project.
+- GamerRunner en GameServer beide starten vanuit de IDE maar code in de GameRunner schrijven die de server start als deze op een specifieke locatie staat.
 - Uitzoeken automatisch bij build db op juiste plek neerzetten.
-- Repository implementatie schrijven.
 - Command set voor commandline maken.
 - Exception handling uit de entrerprice library.
 - Loggen toevoegen uit enterprice library.
@@ -37,3 +35,8 @@ DONE
 - Derde test opzetten en nu proberen daadwerkelijk landen van kleur te veranderen.
 - truc met undefined proberen in te bouwen zodat we geen "Alaska" in de code hoeven te hebben staan.
 - Extra laag uit oMap halen want elk land is maar 1 gesloten lijn.
+- Repository voor het ophalen van een lijst van VisualCountry objecten implementeren in het Data project.
+- GameServer project uitbreiden zodat Nancy en SignalR goed starten en de data laden.
+- Wereld centreren in HTML.
+- Alle javascript en HTML nog een keer controleren.
+- CreateDB in een eigen project plaatsen.

@@ -30,7 +30,7 @@ namespace WDGameEngine.Tests
         /// Initializing for every test.
         /// </summary>
         [TestInitialize]
-        public void PlayerInitialize()
+        public void WorldInitialize()
         {
             this.wdRepositoryMock.Setup(w => w.GetContinents()).Returns(new List<Continent> 
             {

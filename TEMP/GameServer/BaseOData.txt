@@ -1,0 +1,15 @@
+﻿//@author = Taeke van der Veen
+
+"use strict";
+
+// Pseudo namespace
+var wdNS = wdNS || {};
+
+// Embed all code and variables in a pseudo namespace.
+//
+// @param (context) the pseudo namespace.
+(function(context) {
+    context.oMap = {
+#PlaceHolderDynamicData#
+    }
+})(wdNS);

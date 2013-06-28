@@ -1,3 +1,6 @@
+Warning	1	There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "System.Data.SQLite", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.	CreateDB
+
+
 http://msdn.microsoft.com/en-us/library/system.diagnostics.processstartinfo.createnowindow.aspx
 http://stackoverflow.com/questions/5377423/hide-console-window-from-process-start-c-sharp
 

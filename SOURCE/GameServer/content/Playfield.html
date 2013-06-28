@@ -1,0 +1,31 @@
+<!--
+// HTML5 Canvas Worldmap, original code by John Combe (http://joncom.be/).
+--> 
+ 
+<!DOCTYPE html> 
+<html>
+
+<head>
+  <title>Map</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" /> 
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+  <script src="jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+
+  <!-- Our scripts -->
+  <script type="text/javascript" src="Playfield.js"></script>
+  <script type="text/javascript" src="ChangeVisualCountryHub.js"></script>
+  <script type="text/javascript" src="oData.js"></script>
+  <script src="http://localhost:8080/signalr/hubs" type="text/javascript"></script>
+</head>
+<body onload="Init();">
+    <script type="text/javascript">
+        function Init(){ /* we override the Init function. */
+           wdNS.drawAll();
+        }
+    </script>
+  <div align="center">
+    <canvas id="map" width="999" height="600"></canvas>
+  </div>
+</body>
+</html>
+

@@ -1,21 +1,22 @@
 ﻿//-------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Config.cs">
+// <copyright file="Startup.cs">
 // Taeke van der Veen april 2013
 // </copyright>
 // Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-namespace WDGameEngine
+namespace GameServer
 {
-    using System.Collections.Generic;
-    using WDGameEngine.Interfaces;
+    using Microsoft.AspNet.SignalR;
+    using Owin;
 
-    public class Config
+    class Startup
     {
-        public int MinimumNumberPlayers { get; set; }
-
-        public Dictionary<int, int> NumberOfPlayersIntialArmies { get; set; }
-
-        public int MaximumCards { get; set; }
+        public void Configuration(IAppBuilder app)
+        {
+            var config = new HubConfiguration();
+            app.MapHubs(config);
+            app.UseNancy();
+        }
     }
 }

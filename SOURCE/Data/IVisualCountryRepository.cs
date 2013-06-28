@@ -1,24 +1,17 @@
 ﻿//-------------------------------------------------------------------------------------------------------------------------------------------------
-// <copyright file="Continent.cs">
+// <copyright file="IVisualCountryRepository.cs">
 // Taeke van der Veen april 2013
 // </copyright>
 // Visual Studio Express 2012 for Windows Desktop
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-namespace WDGameEngine
+namespace GameServer
 {
     using System.Collections.Generic;
-    using WDGameEngine.Interfaces;
+    using Data.Model;
 
-    public class Continent
+    public interface IVisualCountryRepository
     {
-        /// <summary>
-        /// The <see cref="IPlayer"/> owning this complete Continent gets this amount of new armies in every turn.
-        /// </summary>
-        public int NewArmiesForOwning { get; set; }
-
-        public string Name { get; set; }
-
-        public List<Country> Countries { get; set; }
+        List<VisualCountry> GetAllVisualCountries();
     }
 }

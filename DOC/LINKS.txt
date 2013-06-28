@@ -43,3 +43,13 @@ https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy
 
 Serving static content (laatste antwoord is correct).
 http://stackoverflow.com/questions/13270163/how-to-serve-static-content-in-nancy
+
+Multiple SQLite commands van een bestand.
+http://stackoverflow.com/questions/2467145/sqlite-any-improvements-for-this-attach-code-running-multiple-sql-commands-tr
+
+Mocking httpcontext.
+http://volaresystems.com/blog/post/dont-mock-httpcontext.aspx
+
+Testing a nancy module
+http://www.d80.co.uk/post/2013/01/11/Testing-NancyFx.aspx
+https://github.com/NancyFx/Nancy/wiki/Testing-your-application

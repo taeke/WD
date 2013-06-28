@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AFC78832-81F9-4A78-92B8-C5B4540F7E74}</ProjectGuid>
+    <ProjectGuid>{5A07F786-5035-431B-97AE-AF7A0D2D7F94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WDGameEngine.Tests</RootNamespace>
-    <AssemblyName>WDGameEngine.Tests</AssemblyName>
+    <RootNamespace>GameServer.Tests</RootNamespace>
+    <AssemblyName>GameServer.tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,15 +33,22 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CsQuery">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.17.1\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Testing">
+      <HintPath>..\packages\Nancy.Testing.0.17.1\lib\net40\Nancy.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,33 +63,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="GameTests\ConfigHelper.cs" />
-    <Compile Include="GameTests\EventHelper.cs" />
-    <Compile Include="GameTests\GameBaseTests.cs" />
-    <Compile Include="GameTests\PlayerHelper.cs" />
-    <Compile Include="GameTests\RandomHelper.cs" />
-    <Compile Include="GameTests\TheAddPlayerMethod.cs" />
-    <Compile Include="GameTests\TheAttackMethod.cs" />
-    <Compile Include="GameTests\TheChooseTurnTypeMethod.cs" />
-    <Compile Include="GameTests\TheExchangeCardsMethod.cs" />
-    <Compile Include="GameTests\TheGameConstructor.cs" />
-    <Compile Include="GameTests\TheGoToNextFaseMethod.cs" />
-    <Compile Include="GameTests\TheMoveArmiesMethod.cs" />
-    <Compile Include="GameTests\ThePlaceNewArmiesMethod.cs" />
-    <Compile Include="GameTests\TheStartGameMethod.cs" />
-    <Compile Include="PlayerTests.cs" />
+    <Compile Include="ODataJsModuleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GameTests\WorldHelper.cs" />
-    <Compile Include="WorldTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WDGameEngine\WDGameEngine.csproj">
-      <Project>{8d0a778f-4c58-4b52-af8a-872e8cb4a7f7}</Project>
-      <Name>WDGameEngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{32e6a135-3827-4b6b-bb87-3458bdd25d52}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameServer\GameServer.csproj">
+      <Project>{ea5eab71-3ccd-4393-acb9-7d61e7fd5761}</Project>
+      <Name>GameServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
